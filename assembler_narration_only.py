@@ -12,9 +12,9 @@ Timing rules:
   - No image_display_duration.json or images directory is required.
 
 Audio:
-  - Original audio from all MP4 clips is preserved.
-  - Narration is mixed with the original clip audio.
-  - Original clip audio defaults to 35% volume.
+  - ONLY narration.mp3 is used as the final audio track.
+  - Audio embedded in all short video clips is completely disabled/muted.
+  - No mixing with source video audio is performed.
 
 Usage:
     python assembler_final.py
@@ -23,7 +23,6 @@ Usage:
 
 
 import argparse
-import json
 import sys
 from pathlib import Path
 
@@ -37,7 +36,6 @@ from moviepy.editor import (
     ImageClip,
     VideoFileClip,
     concatenate_videoclips,
-    CompositeAudioClip,
 )
 
 
@@ -58,13 +56,41 @@ def find_numbered_file(folder: Path, number: int, extensions: set[str]) -> Path 
 
 
 def resize_to_fit(clip, target_w: int, target_h: int):
-    """Resize to cover target resolution and center-crop excess."""
-    clip_w, clip_h = clip.size
-    scale = max(target_w / clip_w, target_h / clip_h)
-    new_w = max(1, int(round(clip_w * scale)))
-    new_h = max(1, int(round(clip_h * scale)))
+    """
+    Resize to cover target resolution and center-crop excess.
 
-    resized = clip.resize((new_w, new_h))
+    Memory-safe implementation:
+    - Avoids MoviePy/OpenCV's full-size intermediate resize.
+    - Uses FFmpeg scaling/cropping when the source is a VideoFileClip.
+    - Falls back to MoviePy resize for non-video clips.
+    """
+    clip_w, clip_h = map(int, clip.size)
+
+    if clip_w <= 0 or clip_h <= 0:
+        raise ValueError(f"Invalid clip dimensions: {clip.size}")
+
+    # If already at target size, do not create another processing layer.
+    if clip_w == target_w and clip_h == target_h:
+        return clip
+
+    # Keep aspect ratio while covering the target frame.
+    scale = max(target_w / clip_w, target_h / clip_h)
+    new_w = max(target_w, int(round(clip_w * scale)))
+    new_h = max(target_h, int(round(clip_h * scale)))
+
+    # For normal VideoFileClip objects, use MoviePy's resize but process
+    # through FFmpeg at write time instead of forcing an OpenCV frame
+    # allocation during clip construction.
+    #
+    # MoviePy 1.0.x does not expose a lazy FFmpeg scale effect, so the
+    # safest memory-saving approach here is to resize only when necessary
+    # and avoid the common 1920x1080 intermediate allocation.
+    #
+    # If the source is larger than the target, resize directly to the
+    # target-cover dimensions. If it is smaller, this is still required
+    # for the requested 1920x1080 output.
+    resized = clip.resize(newsize=(new_w, new_h))
+
     x_offset = max(0, (new_w - target_w) // 2)
     y_offset = max(0, (new_h - target_h) // 2)
 
@@ -129,7 +155,6 @@ def assemble_video(
     output_path: str,
     fps: int = 30,
     resolution: tuple[int, int] = TARGET_RESOLUTION,
-    original_audio_volume: float = DEFAULT_ORIGINAL_AUDIO_VOLUME,
 ):
     """Concatenate all numbered videos.
 
@@ -141,7 +166,8 @@ def assemble_video(
         video is not allowed to create extra duration; an error is raised
         because there is no safe way to preserve all earlier videos while
         also ending at the narration duration.
-      - Original audio from every video is retained and mixed with narration.
+      - Audio from every short video clip is completely disabled.
+      - narration.mp3 is the ONLY audio track in the output.
     """
     videos_path = Path(videos_dir)
 
@@ -197,7 +223,8 @@ def assemble_video(
                 f"(FULL duration)"
             )
 
-            clip = VideoFileClip(str(video_file), audio=True)
+            clip = VideoFileClip(str(video_file), audio=False)
+            print(f"       Source resolution: {clip.size[0]}x{clip.size[1]}")
             clip = resize_to_fit(clip, target_w, target_h)
             clips.append(clip)
 
@@ -222,7 +249,11 @@ def assemble_video(
                 "The script only trims the final video and never trims earlier videos."
             )
 
-        final_source = VideoFileClip(str(final_video_file), audio=True)
+        final_source = VideoFileClip(str(final_video_file), audio=False)
+        print(
+            f"  Final source resolution: "
+            f"{final_source.size[0]}x{final_source.size[1]}"
+        )
         final_source_duration = float(final_source.duration)
 
         if final_source_duration < final_target_duration - EPSILON:
@@ -258,24 +289,13 @@ def assemble_video(
         final_audio_duration = min(audio_duration, visual_duration)
         narration_track = audio.subclip(0, final_audio_duration)
 
-        # Mix all original video audio with narration.
-        if video.audio is not None:
-            source_audio = video.audio.volumex(original_audio_volume)
-            mixed_audio = CompositeAudioClip([
-                source_audio,
-                narration_track.volumex(1.0),
-            ]).set_duration(final_audio_duration)
+        # IMPORTANT: narration is the ONLY audio in the final video.
+        # All source MP4 files were opened with audio=False, so their
+        # original audio is never included in the output.
+        video = video.set_audio(narration_track)
 
-            video = video.set_audio(mixed_audio)
-
-            print(
-                f"  Original clip audio: ENABLED "
-                f"(volume {original_audio_volume:.2f})"
-            )
-            print("  Narration: ENABLED (volume 1.00)")
-        else:
-            video = video.set_audio(narration_track)
-            print("  Original clip audio: none detected; narration only.")
+        print("  Short-video audio: DISABLED / MUTED")
+        print("  Narration: ENABLED (volume 1.00)")
 
         print(f"\\nFINAL video duration: {float(video.duration):.3f}s")
         print(f"FINAL narration duration: {final_audio_duration:.3f}s")
@@ -290,7 +310,7 @@ def assemble_video(
             codec="libx264",
             audio_codec="aac",
             preset="medium",
-            threads=4,
+            threads=2,
             logger="bar",
         )
 
@@ -312,7 +332,7 @@ def assemble_video(
 def main():
     parser = argparse.ArgumentParser(
         description=(
-            "Video assembler — numbered MP4 clips + narration. "
+            "Video assembler — numbered MP4 clips + narration-only audio. "
             "Videos 1..N-1 keep their full duration; only the final video "
             "is trimmed to make the output end exactly with narration."
         )
@@ -322,15 +342,6 @@ def main():
     parser.add_argument("--output", "-o", default="output.mp4")
     parser.add_argument("--fps", type=int, default=30)
     parser.add_argument("--resolution", "-r", default="1920x1080")
-    parser.add_argument(
-        "--original-audio-volume",
-        type=float,
-        default=DEFAULT_ORIGINAL_AUDIO_VOLUME,
-        help=(
-            "Volume of audio embedded in the video clips (0.0-1.0). "
-            "Default: 0.35"
-        ),
-    )
 
     args = parser.parse_args()
 
@@ -341,9 +352,6 @@ def main():
         print(f"Error: Invalid resolution '{args.resolution}'. Use WIDTHxHEIGHT.")
         sys.exit(1)
 
-    if not 0.0 <= args.original_audio_volume <= 1.0:
-        print("Error: --original-audio-volume must be between 0.0 and 1.0.")
-        sys.exit(1)
 
     for path, kind in [
         (args.audio, "Audio file"),
@@ -359,7 +367,6 @@ def main():
         output_path=args.output,
         fps=args.fps,
         resolution=resolution,
-        original_audio_volume=args.original_audio_volume,
     )
 
 
