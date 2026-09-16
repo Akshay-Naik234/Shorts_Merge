@@ -1,0 +1,1470 @@
+"""
+Colab-safe Video Generation Assembler
+======================================
+
+ASSEMBLES NUMBERED VIDEOS WITH NARRATION ONLY
+
+Input:
+    videos/
+        1.mp4
+        2.mp4
+        3.mp4
+        ...
+        N.mp4
+
+    narration.mp3
+
+RULES
+-----
+- Videos 1 through N-1 are kept at their complete source duration.
+- ONLY the final video is trimmed.
+- The final video is trimmed so the complete output ends at
+  the narration duration.
+- ALL ORIGINAL VIDEO AUDIO IS REMOVED.
+- narration.mp3 is the ONLY audio in the final output.
+- No video audio is mixed into the narration.
+- No image_display_duration.json is required.
+- No images directory is required.
+- Uses FFmpeg instead of MoviePy.
+- Designed for Google Colab and low RAM usage.
+- Colab/Jupyter arguments are safely ignored.
+"""
+
+import argparse
+import os
+import shutil
+import subprocess
+import sys
+import tempfile
+from pathlib import Path
+
+
+# ============================================================
+# CONFIGURATION
+# ============================================================
+
+SUPPORTED_VIDEO_EXTENSIONS = {
+    ".mp4",
+    ".mov",
+    ".m4v",
+    ".avi",
+    ".mkv",
+    ".webm",
+}
+
+TARGET_RESOLUTION = (1920, 1080)
+DEFAULT_FPS = 30
+
+
+# ============================================================
+# CONSOLE HELPERS
+# ============================================================
+
+def log(message=""):
+    print(message, flush=True)
+
+
+def run_command(command, description=None):
+    """
+    Run an external command and raise a useful error if it fails.
+    """
+
+    if description:
+        log(description)
+
+    process = subprocess.run(
+        command,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+    )
+
+    if process.returncode != 0:
+        log("\nFFmpeg/FFprobe error:")
+        log(process.stderr[-12000:])
+
+        raise RuntimeError(
+            f"Command failed with exit code "
+            f"{process.returncode}."
+        )
+
+    return process
+
+
+# ============================================================
+# CHECK FFMPEG
+# ============================================================
+
+def check_ffmpeg():
+    """
+    Verify that ffmpeg and ffprobe are available.
+    """
+
+    ffmpeg = shutil.which("ffmpeg")
+    ffprobe = shutil.which("ffprobe")
+
+    if ffmpeg is None:
+        raise RuntimeError(
+            "FFmpeg was not found.\n\n"
+            "In Google Colab run:\n\n"
+            "!apt-get update -qq && "
+            "apt-get install -y ffmpeg"
+        )
+
+    if ffprobe is None:
+        raise RuntimeError(
+            "FFprobe was not found.\n\n"
+            "In Google Colab run:\n\n"
+            "!apt-get update -qq && "
+            "apt-get install -y ffmpeg"
+        )
+
+    log(f"FFmpeg:  {ffmpeg}")
+    log(f"FFprobe: {ffprobe}")
+
+
+# ============================================================
+# FIND NUMBERED VIDEO
+# ============================================================
+
+def find_numbered_file(folder, number):
+    """
+    Find numbered video such as:
+
+        1.mp4
+        2.mp4
+        3.mp4
+
+    Supports multiple video extensions.
+    """
+
+    for extension in SUPPORTED_VIDEO_EXTENSIONS:
+        candidate = folder / f"{number}{extension}"
+
+        if candidate.is_file():
+            return candidate
+
+    return None
+
+
+# ============================================================
+# DISCOVER NUMBERED VIDEOS
+# ============================================================
+
+def discover_numbered_videos(folder):
+    """
+    Discover:
+
+        1.mp4
+        2.mp4
+        3.mp4
+        ...
+
+    in numeric order.
+
+    IMPORTANT:
+    Discovery stops at the first missing number after at least
+    one numbered video has been found.
+    """
+
+    videos = []
+
+    for number in range(1, 100000):
+
+        video = find_numbered_file(
+            folder,
+            number,
+        )
+
+        if video is None:
+
+            if number == 1:
+                continue
+
+            if videos:
+                break
+
+            continue
+
+        videos.append(
+            (
+                number,
+                video,
+            )
+        )
+
+    return videos
+
+
+# ============================================================
+# GET MEDIA DURATION
+# ============================================================
+
+def get_duration(path):
+    """
+    Get media duration using FFprobe.
+    """
+
+    command = [
+        "ffprobe",
+        "-v",
+        "error",
+        "-show_entries",
+        "format=duration",
+        "-of",
+        "default=noprint_wrappers=1:nokey=1",
+        str(path),
+    ]
+
+    result = subprocess.run(
+        command,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+    )
+
+    if result.returncode != 0:
+        raise RuntimeError(
+            f"Could not read duration of:\n"
+            f"{path}\n\n"
+            f"{result.stderr}"
+        )
+
+    value = result.stdout.strip()
+
+    try:
+        duration = float(value)
+
+    except ValueError:
+        raise RuntimeError(
+            f"Invalid duration returned by FFprobe "
+            f"for:\n{path}\n\n"
+            f"Value: {value}"
+        )
+
+    if duration <= 0:
+        raise RuntimeError(
+            f"Invalid/non-positive duration for:\n"
+            f"{path}"
+        )
+
+    return duration
+
+
+# ============================================================
+# NORMALIZE VIDEO - NO AUDIO
+# ============================================================
+
+def normalize_video_no_audio(
+    source,
+    destination,
+    fps,
+    width,
+    height,
+):
+    """
+    Normalize a video and COMPLETELY REMOVE its audio.
+
+    Output:
+        H.264
+        1920x1080
+        requested FPS
+        yuv420p
+        NO AUDIO STREAM
+    """
+
+    command = [
+        "ffmpeg",
+        "-y",
+
+        "-hide_banner",
+        "-loglevel",
+        "warning",
+
+        # ----------------------------------------------------
+        # INPUT
+        # ----------------------------------------------------
+
+        "-i",
+        str(source),
+
+        # ----------------------------------------------------
+        # VIDEO
+        # ----------------------------------------------------
+
+        "-map",
+        "0:v:0",
+
+        "-vf",
+        (
+            f"scale={width}:{height}:"
+            "force_original_aspect_ratio=increase,"
+            f"crop={width}:{height},"
+            "setsar=1"
+        ),
+
+        "-r",
+        str(fps),
+
+        "-c:v",
+        "libx264",
+
+        "-preset",
+        "veryfast",
+
+        "-crf",
+        "18",
+
+        "-pix_fmt",
+        "yuv420p",
+
+        # ----------------------------------------------------
+        # IMPORTANT:
+        # NO AUDIO
+        # ----------------------------------------------------
+
+        "-an",
+
+        # ----------------------------------------------------
+        # TIMESTAMP CLEANUP
+        # ----------------------------------------------------
+
+        "-vsync",
+        "cfr",
+
+        "-avoid_negative_ts",
+        "make_zero",
+
+        str(destination),
+    ]
+
+    run_command(
+        command,
+        description=(
+            f"  Normalizing: "
+            f"{source.name} "
+            f"(AUDIO OFF)"
+        ),
+    )
+
+
+# ============================================================
+# NORMALIZE FINAL VIDEO - NO AUDIO + TRIM
+# ============================================================
+
+def normalize_final_video(
+    source,
+    destination,
+    target_duration,
+    fps,
+    width,
+    height,
+):
+    """
+    Normalize the FINAL video.
+
+    This is the ONLY place where a video is trimmed.
+
+    Videos 1..N-1 are never trimmed.
+
+    Original audio is completely removed.
+    """
+
+    command = [
+        "ffmpeg",
+        "-y",
+
+        "-hide_banner",
+        "-loglevel",
+        "warning",
+
+        # ----------------------------------------------------
+        # INPUT
+        # ----------------------------------------------------
+
+        "-i",
+        str(source),
+
+        # ----------------------------------------------------
+        # FINAL VIDEO DURATION
+        # ----------------------------------------------------
+
+        "-t",
+        f"{target_duration:.6f}",
+
+        # ----------------------------------------------------
+        # VIDEO ONLY
+        # ----------------------------------------------------
+
+        "-map",
+        "0:v:0",
+
+        "-vf",
+        (
+            f"scale={width}:{height}:"
+            "force_original_aspect_ratio=increase,"
+            f"crop={width}:{height},"
+            "setsar=1"
+        ),
+
+        "-r",
+        str(fps),
+
+        "-c:v",
+        "libx264",
+
+        "-preset",
+        "veryfast",
+
+        "-crf",
+        "18",
+
+        "-pix_fmt",
+        "yuv420p",
+
+        # ----------------------------------------------------
+        # IMPORTANT:
+        # REMOVE ALL AUDIO
+        # ----------------------------------------------------
+
+        "-an",
+
+        # ----------------------------------------------------
+        # TIMESTAMP CLEANUP
+        # ----------------------------------------------------
+
+        "-vsync",
+        "cfr",
+
+        "-avoid_negative_ts",
+        "make_zero",
+
+        str(destination),
+    ]
+
+    run_command(
+        command,
+        description=(
+            f"  FINAL VIDEO: "
+            f"{source.name} "
+            f"-> trimming to "
+            f"{target_duration:.3f}s "
+            f"(AUDIO OFF)"
+        ),
+    )
+
+
+# ============================================================
+# CREATE CONCAT FILE
+# ============================================================
+
+def create_concat_file(
+    video_paths,
+    concat_file,
+):
+    """
+    Create an FFmpeg concat-demuxer file.
+    """
+
+    with open(
+        concat_file,
+        "w",
+        encoding="utf-8",
+    ) as file:
+
+        for path in video_paths:
+
+            absolute_path = (
+                Path(path)
+                .resolve()
+            )
+
+            escaped = str(
+                absolute_path
+            ).replace(
+                "'",
+                "'\\''",
+            )
+
+            file.write(
+                f"file '{escaped}'\n"
+            )
+
+
+# ============================================================
+# CONCATENATE VIDEO-ONLY FILES
+# ============================================================
+
+def concatenate_normalized_videos(
+    video_paths,
+    output_path,
+):
+    """
+    Concatenate normalized video-only files.
+
+    All intermediate files contain:
+        VIDEO ONLY
+        NO AUDIO
+    """
+
+    concat_file = (
+        Path(output_path).parent
+        / "concat_list.txt"
+    )
+
+    create_concat_file(
+        video_paths,
+        concat_file,
+    )
+
+    command = [
+        "ffmpeg",
+        "-y",
+
+        "-hide_banner",
+        "-loglevel",
+        "warning",
+
+        "-f",
+        "concat",
+
+        "-safe",
+        "0",
+
+        "-i",
+        str(concat_file),
+
+        # ----------------------------------------------------
+        # VIDEO ONLY
+        # ----------------------------------------------------
+
+        "-map",
+        "0:v:0",
+
+        "-c:v",
+        "copy",
+
+        "-an",
+
+        "-movflags",
+        "+faststart",
+
+        str(output_path),
+    ]
+
+    run_command(
+        command,
+        description=(
+            "\nConcatenating normalized "
+            "VIDEO-ONLY clips..."
+        ),
+    )
+
+    try:
+        concat_file.unlink()
+
+    except Exception:
+        pass
+
+
+# ============================================================
+# ADD NARRATION ONLY
+# ============================================================
+
+def add_narration_only(
+    video_path,
+    narration_path,
+    output_path,
+    target_duration,
+):
+    """
+    Add narration.mp3 as the ONLY audio.
+
+    IMPORTANT:
+    - Any existing video audio is ignored.
+    - Only video stream from input 0 is mapped.
+    - Only narration audio from input 1 is mapped.
+    """
+
+    command = [
+        "ffmpeg",
+        "-y",
+
+        "-hide_banner",
+        "-loglevel",
+        "warning",
+
+        # ----------------------------------------------------
+        # VIDEO INPUT
+        # ----------------------------------------------------
+
+        "-i",
+        str(video_path),
+
+        # ----------------------------------------------------
+        # NARRATION INPUT
+        # ----------------------------------------------------
+
+        "-i",
+        str(narration_path),
+
+        # ----------------------------------------------------
+        # MAP VIDEO ONLY FROM VIDEO FILE
+        # ----------------------------------------------------
+
+        "-map",
+        "0:v:0",
+
+        # ----------------------------------------------------
+        # MAP NARRATION ONLY
+        # ----------------------------------------------------
+
+        "-map",
+        "1:a:0",
+
+        # ----------------------------------------------------
+        # EXACT FINAL DURATION
+        # ----------------------------------------------------
+
+        "-t",
+        f"{target_duration:.6f}",
+
+        # ----------------------------------------------------
+        # VIDEO
+        # ----------------------------------------------------
+
+        "-c:v",
+        "copy",
+
+        # ----------------------------------------------------
+        # NARRATION AUDIO
+        # ----------------------------------------------------
+
+        "-c:a",
+        "aac",
+
+        "-b:a",
+        "192k",
+
+        "-ar",
+        "48000",
+
+        "-ac",
+        "2",
+
+        # ----------------------------------------------------
+        # AUDIO START
+        # ----------------------------------------------------
+
+        "-af",
+        "aresample=async=1:first_pts=0",
+
+        # ----------------------------------------------------
+        # FAST START
+        # ----------------------------------------------------
+
+        "-movflags",
+        "+faststart",
+
+        str(output_path),
+    ]
+
+    run_command(
+        command,
+        description=(
+            "\nAdding narration ONLY "
+            "(ALL VIDEO AUDIO OFF)..."
+        ),
+    )
+
+
+# ============================================================
+# VERIFY AUDIO STREAMS
+# ============================================================
+
+def count_audio_streams(path):
+    """
+    Count audio streams in a media file.
+    """
+
+    command = [
+        "ffprobe",
+        "-v",
+        "error",
+        "-select_streams",
+        "a",
+        "-show_entries",
+        "stream=index",
+        "-of",
+        "csv=p=0",
+        str(path),
+    ]
+
+    result = subprocess.run(
+        command,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+    )
+
+    if result.returncode != 0:
+        return 0
+
+    lines = [
+        line.strip()
+        for line in result.stdout.splitlines()
+        if line.strip()
+    ]
+
+    return len(lines)
+
+
+# ============================================================
+# MAIN ASSEMBLY
+# ============================================================
+
+def assemble_video(
+    audio_path,
+    videos_dir,
+    output_path,
+    fps=DEFAULT_FPS,
+    resolution=TARGET_RESOLUTION,
+):
+    """
+    Main assembly process.
+
+    Steps:
+
+    1. Discover numbered videos.
+    2. Measure narration duration.
+    3. Measure videos 1..N-1.
+    4. Keep videos 1..N-1 at full duration.
+    5. Calculate required duration of final video.
+    6. Validate final video.
+    7. Normalize each video one at a time.
+    8. Remove ALL video audio.
+    9. Trim ONLY final video.
+    10. Concatenate video-only clips.
+    11. Add narration as the ONLY audio.
+    12. Verify final output.
+    """
+
+    audio_path = Path(audio_path)
+    videos_dir = Path(videos_dir)
+    output_path = Path(output_path)
+
+    width, height = resolution
+
+    # ========================================================
+    # VALIDATION
+    # ========================================================
+
+    if not videos_dir.is_dir():
+        raise RuntimeError(
+            f"Videos directory not found:\n"
+            f"{videos_dir}"
+        )
+
+    if not audio_path.is_file():
+        raise RuntimeError(
+            f"Audio file not found:\n"
+            f"{audio_path}"
+        )
+
+    check_ffmpeg()
+
+    # ========================================================
+    # DISCOVER VIDEOS
+    # ========================================================
+
+    numbered_videos = (
+        discover_numbered_videos(
+            videos_dir
+        )
+    )
+
+    if not numbered_videos:
+        raise RuntimeError(
+            f"No numbered videos found in:\n"
+            f"{videos_dir}\n\n"
+            "Expected files such as:\n"
+            "1.mp4\n"
+            "2.mp4\n"
+            "3.mp4\n"
+        )
+
+    log(
+        f"\nFound "
+        f"{len(numbered_videos)} "
+        f"numbered videos."
+    )
+
+    log(
+        f"First video: "
+        f"{numbered_videos[0][1].name}"
+    )
+
+    log(
+        f"Final video: "
+        f"{numbered_videos[-1][1].name}"
+    )
+
+    # ========================================================
+    # NARRATION DURATION
+    # ========================================================
+
+    narration_duration = get_duration(
+        audio_path
+    )
+
+    log(
+        f"\nNarration duration: "
+        f"{narration_duration:.3f}s"
+    )
+
+    # ========================================================
+    # EARLIER VIDEOS
+    # ========================================================
+
+    duration_before_final = 0.0
+
+    if len(numbered_videos) > 1:
+
+        log(
+            "\nChecking durations of "
+            "videos 1..N-1..."
+        )
+
+        for index, (
+            video_number,
+            video_path,
+        ) in enumerate(
+            numbered_videos[:-1],
+            start=1,
+        ):
+
+            duration = get_duration(
+                video_path
+            )
+
+            duration_before_final += (
+                duration
+            )
+
+            log(
+                f"  [{index}/"
+                f"{len(numbered_videos)}] "
+                f"{video_path.name}: "
+                f"{duration:.3f}s "
+                f"(FULL, AUDIO OFF)"
+            )
+
+    # ========================================================
+    # FINAL VIDEO CALCULATION
+    # ========================================================
+
+    (
+        final_video_number,
+        final_video_path,
+    ) = numbered_videos[-1]
+
+    final_target_duration = (
+        narration_duration
+        - duration_before_final
+    )
+
+    log(
+        f"\nFinal video: "
+        f"{final_video_path.name}"
+    )
+
+    log(
+        f"Duration before final video: "
+        f"{duration_before_final:.3f}s"
+    )
+
+    log(
+        f"Narration duration: "
+        f"{narration_duration:.3f}s"
+    )
+
+    log(
+        f"Required final-video duration: "
+        f"{final_target_duration:.3f}s"
+    )
+
+    # ========================================================
+    # NARRATION TOO SHORT
+    # ========================================================
+
+    if final_target_duration <= 0.05:
+        raise RuntimeError(
+            "\nThe narration is not long enough "
+            "to contain videos 1..N-1.\n\n"
+
+            f"Earlier videos total: "
+            f"{duration_before_final:.3f}s\n"
+
+            f"Narration duration: "
+            f"{narration_duration:.3f}s\n\n"
+
+            "The timing rule only allows the "
+            "FINAL video to be trimmed."
+        )
+
+    # ========================================================
+    # FINAL VIDEO LENGTH CHECK
+    # ========================================================
+
+    final_source_duration = get_duration(
+        final_video_path
+    )
+
+    log(
+        f"Final source duration: "
+        f"{final_source_duration:.3f}s"
+    )
+
+    if (
+        final_source_duration
+        < final_target_duration - 0.05
+    ):
+        raise RuntimeError(
+            "\nFinal video is too short.\n\n"
+
+            f"File: "
+            f"{final_video_path.name}\n"
+
+            f"Available: "
+            f"{final_source_duration:.3f}s\n"
+
+            f"Required: "
+            f"{final_target_duration:.3f}s\n\n"
+
+            "Earlier videos are intentionally "
+            "not trimmed."
+        )
+
+    # ========================================================
+    # OUTPUT DIRECTORY
+    # ========================================================
+
+    output_path.parent.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
+    # ========================================================
+    # TEMPORARY WORKING DIRECTORY
+    # ========================================================
+
+    with tempfile.TemporaryDirectory(
+        prefix="colab_video_assembler_"
+    ) as temp_directory:
+
+        temp_directory = Path(
+            temp_directory
+        )
+
+        normalized_dir = (
+            temp_directory
+            / "normalized"
+        )
+
+        normalized_dir.mkdir(
+            parents=True,
+            exist_ok=True,
+        )
+
+        normalized_paths = []
+
+        log(
+            "\nTemporary working directory:"
+        )
+
+        log(
+            str(temp_directory)
+        )
+
+        # ====================================================
+        # NORMALIZE
+        # ====================================================
+
+        log(
+            "\n=========================================="
+        )
+
+        log(
+            "NORMALIZING VIDEOS"
+        )
+
+        log(
+            "VIDEO AUDIO: OFF"
+        )
+
+        log(
+            "=========================================="
+        )
+
+        total_videos = len(
+            numbered_videos
+        )
+
+        for index, (
+            video_number,
+            source,
+        ) in enumerate(
+            numbered_videos,
+            start=1,
+        ):
+
+            normalized_path = (
+                normalized_dir
+                / f"{video_number:06d}.mp4"
+            )
+
+            is_final = (
+                index == total_videos
+            )
+
+            # =================================================
+            # VIDEOS 1..N-1
+            # =================================================
+
+            if not is_final:
+
+                log(
+                    f"\n[{index}/"
+                    f"{total_videos}] "
+                    f"{source.name} "
+                    f"(FULL - AUDIO OFF)"
+                )
+
+                normalize_video_no_audio(
+                    source=source,
+                    destination=normalized_path,
+                    fps=fps,
+                    width=width,
+                    height=height,
+                )
+
+            # =================================================
+            # FINAL VIDEO
+            # =================================================
+
+            else:
+
+                log(
+                    f"\n[{index}/"
+                    f"{total_videos}] "
+                    f"{source.name} "
+                    f"(FINAL - TRIM - AUDIO OFF)"
+                )
+
+                normalize_final_video(
+                    source=source,
+                    destination=normalized_path,
+                    target_duration=(
+                        final_target_duration
+                    ),
+                    fps=fps,
+                    width=width,
+                    height=height,
+                )
+
+            # =================================================
+            # VERIFY NORMALIZED FILE
+            # =================================================
+
+            if not normalized_path.is_file():
+                raise RuntimeError(
+                    "FFmpeg did not create:\n"
+                    f"{normalized_path}"
+                )
+
+            generated_duration = (
+                get_duration(
+                    normalized_path
+                )
+            )
+
+            audio_streams = count_audio_streams(
+                normalized_path
+            )
+
+            log(
+                f"  -> generated duration: "
+                f"{generated_duration:.3f}s"
+            )
+
+            log(
+                f"  -> audio streams: "
+                f"{audio_streams} "
+                f"(EXPECTED: 0)"
+            )
+
+            if audio_streams != 0:
+                raise RuntimeError(
+                    f"Audio was not removed from:\n"
+                    f"{normalized_path}"
+                )
+
+            normalized_paths.append(
+                normalized_path
+            )
+
+        # ====================================================
+        # CONCATENATE
+        # ====================================================
+
+        concatenated_path = (
+            temp_directory
+            / "concatenated.mp4"
+        )
+
+        concatenate_normalized_videos(
+            normalized_paths,
+            concatenated_path,
+        )
+
+        # ====================================================
+        # VERIFY CONCAT AUDIO
+        # ====================================================
+
+        concat_audio_streams = count_audio_streams(
+            concatenated_path
+        )
+
+        log(
+            f"\nConcatenated video audio streams: "
+            f"{concat_audio_streams}"
+        )
+
+        if concat_audio_streams != 0:
+            raise RuntimeError(
+                "Unexpected audio stream found "
+                "in concatenated video."
+            )
+
+        # ====================================================
+        # ADD NARRATION ONLY
+        # ====================================================
+
+        log(
+            "\n=========================================="
+        )
+
+        log(
+            "ADDING NARRATION"
+        )
+
+        log(
+            "=========================================="
+        )
+
+        log(
+            "Video audio: OFF"
+        )
+
+        log(
+            "Narration audio: ON"
+        )
+
+        log(
+            "Final audio tracks: NARRATION ONLY"
+        )
+
+        add_narration_only(
+            video_path=concatenated_path,
+            narration_path=audio_path,
+            output_path=output_path,
+            target_duration=narration_duration,
+        )
+
+        # ====================================================
+        # FINAL VERIFICATION
+        # ====================================================
+
+        if not output_path.is_file():
+            raise RuntimeError(
+                "FFmpeg completed but the output "
+                "file was not found."
+            )
+
+        final_duration = get_duration(
+            output_path
+        )
+
+        final_audio_streams = count_audio_streams(
+            output_path
+        )
+
+        log(
+            "\n=========================================="
+        )
+
+        log(
+            "ASSEMBLY COMPLETE"
+        )
+
+        log(
+            "=========================================="
+        )
+
+        log(
+            f"Output: "
+            f"{output_path}"
+        )
+
+        log(
+            f"Final duration: "
+            f"{final_duration:.3f}s"
+        )
+
+        log(
+            f"Narration duration: "
+            f"{narration_duration:.3f}s"
+        )
+
+        log(
+            f"Difference: "
+            f"{final_duration - narration_duration:+.3f}s"
+        )
+
+        log(
+            f"Audio streams: "
+            f"{final_audio_streams}"
+        )
+
+        log(
+            "Audio source: narration.mp3 ONLY"
+        )
+
+        log(
+            f"Resolution: "
+            f"{width}x{height}"
+        )
+
+        log(
+            f"FPS: "
+            f"{fps}"
+        )
+
+        # ====================================================
+        # FINAL AUDIO VALIDATION
+        # ====================================================
+
+        if final_audio_streams != 1:
+            raise RuntimeError(
+                "\nFinal output does not contain "
+                "exactly ONE audio stream.\n"
+                f"Detected: {final_audio_streams}"
+            )
+
+        log(
+            "\n=========================================="
+        )
+
+        log(
+            "AUDIO CHECK PASSED"
+        )
+
+        log(
+            "=========================================="
+        )
+
+        log(
+            "Video audio: COMPLETELY OFF"
+        )
+
+        log(
+            "Narration: ONLY AUDIO"
+        )
+
+        log(
+            "\nDone!"
+        )
+
+
+# ============================================================
+# MAIN
+# ============================================================
+
+def main():
+
+    parser = argparse.ArgumentParser(
+        description=(
+            "Colab-safe video assembler. "
+            "Videos 1..N-1 remain full length; "
+            "only the final video is trimmed "
+            "to match narration. "
+            "ALL VIDEO AUDIO IS REMOVED."
+        )
+    )
+
+    parser.add_argument(
+        "--audio",
+        "-a",
+        default="narration.mp3",
+        help="Narration audio file.",
+    )
+
+    parser.add_argument(
+        "--videos",
+        "-v",
+        default="./videos",
+        help=(
+            "Directory containing numbered "
+            "videos."
+        ),
+    )
+
+    parser.add_argument(
+        "--output",
+        "-o",
+        default="output.mp4",
+        help="Output MP4 filename.",
+    )
+
+    parser.add_argument(
+        "--fps",
+        type=int,
+        default=DEFAULT_FPS,
+        help="Output FPS. Default: 30.",
+    )
+
+    parser.add_argument(
+        "--resolution",
+        "-r",
+        default="1920x1080",
+        help=(
+            "Output resolution. "
+            "Default: 1920x1080."
+        ),
+    )
+
+    # ========================================================
+    # COLAB / JUPYTER COMPATIBILITY
+    # ========================================================
+    #
+    # parse_known_args() prevents Jupyter/Colab arguments
+    # such as:
+    #
+    # -f
+    # /root/.local/share/jupyter/runtime/kernel-xxxx.json
+    #
+    # from causing:
+    #
+    # error: unrecognized arguments
+    #
+    # ========================================================
+
+    args, unknown = (
+        parser.parse_known_args()
+    )
+
+    if unknown:
+
+        log(
+            "\nIgnoring unknown arguments "
+            "(likely Jupyter/Colab):"
+        )
+
+        for item in unknown:
+
+            log(
+                f"  {item}"
+            )
+
+    # ========================================================
+    # RESOLUTION
+    # ========================================================
+
+    try:
+
+        width, height = (
+            args.resolution
+            .lower()
+            .split("x")
+        )
+
+        width = int(width)
+        height = int(height)
+
+    except Exception:
+
+        parser.error(
+            "Invalid resolution. "
+            "Use WIDTHxHEIGHT, for example "
+            "1920x1080."
+        )
+
+    if width <= 0 or height <= 0:
+
+        parser.error(
+            "Resolution values must be "
+            "greater than zero."
+        )
+
+    # ========================================================
+    # FPS
+    # ========================================================
+
+    if args.fps <= 0:
+
+        parser.error(
+            "FPS must be greater than zero."
+        )
+
+    # ========================================================
+    # ASSEMBLE
+    # ========================================================
+
+    try:
+
+        assemble_video(
+            audio_path=args.audio,
+            videos_dir=args.videos,
+            output_path=args.output,
+            fps=args.fps,
+            resolution=(
+                width,
+                height,
+            ),
+        )
+
+    except KeyboardInterrupt:
+
+        log(
+            "\n\nProcess interrupted by user."
+        )
+
+        sys.exit(130)
+
+    except Exception as exc:
+
+        log(
+            "\n\n=========================================="
+        )
+
+        log(
+            "ERROR"
+        )
+
+        log(
+            "=========================================="
+        )
+
+        log(
+            str(exc)
+        )
+
+        sys.exit(1)
+
+
+# ============================================================
+# ENTRY POINT
+# ============================================================
+
+if __name__ == "__main__":
+    main()
