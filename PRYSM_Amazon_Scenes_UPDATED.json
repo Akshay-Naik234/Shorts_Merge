@@ -1,0 +1,1431 @@
+[
+  {
+    "sceneNo": 1,
+    "startTime": 0.0,
+    "endTime": 4.0,
+    "duration": 4,
+    "narration": "You can walk into the Amazon and within minutes lose your sense of direction.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "1 generate video Cinematic documentary POV of a person entering dense Amazon rainforest in the present day. Move forward through narrowing vegetation as the clear path gradually disappears. Leaves brush past the lens, the light becomes darker, and the frame loses obvious landmarks. Natural handheld movement, humid atmosphere, ordinary footstep pace. Keep the beat immediate: the feeling of losing orientation should arrive before the cut. No text, captions, watermarks, or logos.",
+    "pacing": "fast_visual_beat"
+  },
+  {
+    "sceneNo": 2,
+    "startTime": 4.0,
+    "endTime": 10.0,
+    "duration": 6,
+    "narration": "The trees close in around you. The ground is wet. The air is heavy.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "2 generate video Present-day Amazon rainforest at ground level, following the same POV walker. Wet leaves and muddy ground pass close beneath the camera while trunks and vines crowd the path. A slight lateral shift reveals how little open space remains. Natural handheld imperfection, moisture on foliage, heavy humid air. Keep the shot brisk, with one clear change in camera position or subject action. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_documentary"
+  },
+  {
+    "sceneNo": 3,
+    "startTime": 10.0,
+    "endTime": 20.0,
+    "duration": 10,
+    "narration": "You hear insects everywhere, birds somewhere above the canopy, and sometimes a rustle in the vegetation that you can't explain.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "3 generate video Present-day Amazon rainforest, close to ground level. Start on insects moving across wet foliage, then shift attention toward a sudden rustle deeper in the vegetation while birds stir high in the canopy. Natural rack focus and small environmental movements; nothing supernatural is revealed. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_3_beat"
+  },
+  {
+    "sceneNo": 4,
+    "startTime": 20.0,
+    "endTime": 28.0,
+    "duration": 8,
+    "narration": "You keep moving, but eventually you realize something uncomfortable. You don't really know where you are anymore.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "4 generate video POV in the present-day Amazon. The walker slows, stops, and turns through several nearly identical directions: trees, vines, wet ground, no landmark. The camera makes a natural partial turn rather than a perfect 180-degree move, ending on the same-looking forest. Keep the beat immediate: one clear visual change before the cut. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 5,
+    "startTime": 28.0,
+    "endTime": 34.0,
+    "duration": 6,
+    "narration": "For centuries, outsiders entered this forest and tried to understand what they were looking at.",
+    "visualType": "video",
+    "referenceIds": [
+      "REF-08"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "5 generate video Brief documentary reconstruction showing outsiders entering Amazon rainforest across different historical periods. Use a quick visual progression of explorers, missionaries, and later search parties approaching the treeline, all seen from a respectful distance. Period details should change subtly between eras; the forest remains the constant subject. Keep the shot brisk, with one clear change in camera position or subject action. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_documentary"
+  },
+  {
+    "sceneNo": 6,
+    "startTime": 34.0,
+    "endTime": 42.0,
+    "duration": 8,
+    "narration": "Some came searching for gold. Others came looking for rivers, cities, or a way through.",
+    "visualType": "video",
+    "referenceIds": [
+      "REF-08"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "6 generate video Historical documentary montage: a 16th-century river expedition searching along the Amazon, a later party studying a river route, and explorers pushing through dense vegetation. Each image should communicate a different goal—gold, rivers, settlements, passage—without turning into a fantasy adventure scene. Use short natural transitions and real period movement. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 7,
+    "startTime": 42.0,
+    "endTime": 46.0,
+    "duration": 4,
+    "narration": "And most of them saw an enormous wall of green.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "7 generate video Wide present-day Amazon canopy viewed from slightly above treetop level. The green forest stretches continuously toward the horizon, with subtle wind moving different layers of vegetation. A gentle rise reveals the scale without an exaggerated drone move. Keep the beat immediate: one clear visual change before the cut. No text, captions, watermarks, or logos.",
+    "pacing": "fast_visual_beat"
+  },
+  {
+    "sceneNo": 8,
+    "startTime": 46.0,
+    "endTime": 50.0,
+    "duration": 4,
+    "narration": "But there was something they couldn't see.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "8 generate video Present-day canopy seen from above. Hold on an ordinary wall of green, then let a small opening in the foliage briefly reveal darker forest below before leaves close back over it. The hidden layer should be implied, not shown as glowing CGI. Keep the beat immediate: one clear visual change before the cut. No text, captions, watermarks, or logos.",
+    "pacing": "fast_visual_beat"
+  },
+  {
+    "sceneNo": 9,
+    "startTime": 50.0,
+    "endTime": 58.0,
+    "duration": 8,
+    "narration": "Beneath that canopy were traces of roads, settlements, canals, and monumental structures built by people who lived here centuries ago.",
+    "visualType": "motion_graphic",
+    "referenceIds": [
+      "REF-06"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "9 generate video Clean documentary visual transition from a dense Amazon canopy to an archaeological terrain view. Start with the forest surface, then peel back the vegetation to reveal faint, realistic traces of ancient roads, canals, settlement platforms, and monumental earthworks. The reveal should feel like real LIDAR interpretation rather than glowing fantasy graphics. Use simple restrained terrain lines and no unnecessary labels. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 10,
+    "startTime": 58.0,
+    "endTime": 66.0,
+    "duration": 8,
+    "narration": "The strange thing is that the forest didn't make those things disappear. It simply covered them.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "10 generate video Present-day forest floor. A close view of roots, leaf litter, and damp soil slowly reveals the straight edge of an old earthwork or buried path beneath the natural growth. The structure remains mostly concealed; the point is that vegetation has covered it rather than destroyed it. Natural macro movement, no magical reveal. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 11,
+    "startTime": 66.0,
+    "endTime": 72.0,
+    "duration": 6,
+    "narration": "And once scientists found a way to look beneath the trees, the Amazon started telling a very different story.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "11 generate video Present-day research aircraft flying over the Bolivian Amazon with a visible LIDAR sensor beneath it. Cut naturally from the aircraft to a brief glimpse of the forest passing below, establishing that scientists can survey terrain hidden under vegetation. Realistic aircraft motion and ordinary daylight. Keep the shot brisk, with one clear change in camera position or subject action. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_documentary"
+  },
+  {
+    "sceneNo": 12,
+    "startTime": 72.0,
+    "endTime": 76.0,
+    "duration": 4,
+    "narration": "One of the technologies that changed that was LIDAR.",
+    "visualType": "motion_graphic",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "12 generate video Simple documentary motion graphic explaining LIDAR. Show a sensor above a forest canopy sending thin laser pulses downward, with returning signals forming a terrain profile beneath the vegetation. Keep the animation clean and scientific, with restrained lines and no futuristic hologram look. Keep the beat immediate: one clear visual change before the cut. No text, captions, watermarks, or logos.",
+    "pacing": "fast_visual_beat"
+  },
+  {
+    "sceneNo": 13,
+    "startTime": 76.0,
+    "endTime": 86.0,
+    "duration": 10,
+    "narration": "Instead of relying on ordinary photographs, LIDAR sends laser pulses toward the ground and uses the returning signals to map the landscape.",
+    "visualType": "motion_graphic",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "13 generate video Documentary LIDAR animation: a survey aircraft or sensor scans a forest from above while laser pulses travel down through gaps in the canopy and return to the sensor. Transition from ordinary aerial photography to a point-cloud style terrain view. Keep the process visually understandable rather than overly technical. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_3_beat"
+  },
+  {
+    "sceneNo": 14,
+    "startTime": 86.0,
+    "endTime": 92.0,
+    "duration": 6,
+    "narration": "Even when thick vegetation blocks the view from above, some of those laser pulses can reach the ground.",
+    "visualType": "motion_graphic",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "14 generate video LIDAR cross-section animation through dense rainforest. Most pulses stop at vegetation, while some reach the ground and return. Gradually reduce the vegetation layer so the ground surface becomes visible underneath. Use restrained scientific graphics and believable spacing between pulses. Keep the shot brisk, with one clear change in camera position or subject action. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_documentary"
+  },
+  {
+    "sceneNo": 15,
+    "startTime": 92.0,
+    "endTime": 100.0,
+    "duration": 8,
+    "narration": "Researchers can then create a digital model of the terrain and strip away much of the vegetation.",
+    "visualType": "motion_graphic",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "15 generate video Clean documentary terrain reconstruction. Start with a dense green aerial view, then transition into a bare-earth digital terrain model as vegetation fades away. Ancient roads, mounds, and channels become visible in the terrain without glowing neon effects. The final frame should look like a plausible archaeological mapping result. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 16,
+    "startTime": 100.0,
+    "endTime": 104.0,
+    "duration": 4,
+    "narration": "And that's when things get interesting.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "16 generate video Present-day LIDAR research workspace. A researcher studies a terrain model on a monitor; the display resolves from a noisy point cloud into recognizable earthworks. Show the reaction through a small pause or lean toward the screen rather than an exaggerated surprised face. Keep the shot immediate: one clear visual change before the cut. No text, captions, watermarks, or logos.",
+    "pacing": "fast_visual_beat"
+  },
+  {
+    "sceneNo": 17,
+    "startTime": 104.0,
+    "endTime": 112.0,
+    "duration": 8,
+    "narration": "In the Bolivian Amazon, LIDAR revealed an extensive network of settlements associated with the Kassarabe culture,",
+    "visualType": "motion_graphic",
+    "referenceIds": [
+      "REF-06"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "17 generate video Documentary map animation of the Bolivian Amazon, centered on the Llanos de Mojos. Settlement locations appear one by one and connect into an extensive network associated with the Casarabe culture. Keep the geography restrained and believable; the network should grow organically rather than as glowing game-like markers. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 18,
+    "startTime": 112.0,
+    "endTime": 116.0,
+    "duration": 4,
+    "narration": "which flourished roughly between AD 500 and 1400.",
+    "visualType": "motion_graphic",
+    "referenceIds": [
+      "REF-06"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "18 generate video Continue the same Bolivian Amazon map. A simple timeline advances from roughly AD 500 toward AD 1400 while the settlement network remains visible, making the time range clear through motion rather than a wall of text. Clean archaeological documentary style. Keep the beat immediate: one clear visual change before the cut. No text, captions, watermarks, or logos.",
+    "pacing": "fast_visual_beat"
+  },
+  {
+    "sceneNo": 19,
+    "startTime": 116.0,
+    "endTime": 124.0,
+    "duration": 8,
+    "narration": "Researchers found large settlements, monumental earthen structures, raised causeways, canals, and reservoirs.",
+    "visualType": "video",
+    "referenceIds": [
+      "REF-06"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "19 generate video Reconstruction of a Casarabe settlement in the Llanos de Mojos during roughly AD 500–1400. Begin at ground level beside a raised causeway, then reveal canals, reservoirs, earthen platforms, and large settlements across the flat wetland. People should appear small and naturally occupied with ordinary daily activity. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 20,
+    "startTime": 124.0,
+    "endTime": 130.0,
+    "duration": 6,
+    "narration": "Some of the monumental structures rise more than 20 meters above the surrounding landscape.",
+    "visualType": "video",
+    "referenceIds": [
+      "REF-06"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "20 generate video Low-angle view of a Casarabe monumental earthen structure in the Llanos de Mojos, with a few distant people walking near its base for scale. Tilt upward naturally as the mound rises above the flat landscape. Avoid exaggerated monumental fantasy proportions; the height should feel physically believable. Keep the shot brisk, with one clear change in camera position or subject action. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_documentary"
+  },
+  {
+    "sceneNo": 21,
+    "startTime": 130.0,
+    "endTime": 140.0,
+    "duration": 10,
+    "narration": "Look at the forest from the ground and you might see nothing unusual. Look at the same place through the LIDAR data and the landscape suddenly makes sense.",
+    "visualType": "motion_graphic",
+    "referenceIds": [
+      "REF-06"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "21 generate video Documentary comparison of the same landscape in two views: first an ordinary ground-level forest scene that reveals almost nothing, then the corresponding LIDAR terrain model where mounds and causeways become obvious. The transition should happen quickly enough to land with the narration's 'suddenly makes sense' beat. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_3_beat"
+  },
+  {
+    "sceneNo": 22,
+    "startTime": 140.0,
+    "endTime": 148.0,
+    "duration": 8,
+    "narration": "Roads connect settlements. Water was being managed. Huge structures had been deliberately constructed.",
+    "visualType": "motion_graphic",
+    "referenceIds": [
+      "REF-06"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "22 generate video Clean archaeological map animation. Settlement points connect with realistic causeways, water channels fill or route through the landscape, and large earthworks appear as raised terrain. Use simple movement to show roads, managed water, and deliberate construction rather than decorative glowing icons. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 23,
+    "startTime": 148.0,
+    "endTime": 154.0,
+    "duration": 6,
+    "narration": "This wasn't simply a few people passing through a forest. It was a human landscape.",
+    "visualType": "video",
+    "referenceIds": [
+      "REF-06"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "23 generate video Wide reconstruction of a lived-in Casarabe landscape in the Llanos de Mojos. People move naturally between houses, raised paths, fields, and water channels while the camera gently pulls back to show the settlement as part of a larger engineered landscape. The emphasis is human occupation, not a fantasy city. Keep the shot brisk, with one clear change in camera position or subject action. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_documentary"
+  },
+  {
+    "sceneNo": 24,
+    "startTime": 154.0,
+    "endTime": 162.0,
+    "duration": 8,
+    "narration": "And that discovery matters because for a long time, the Amazon was described as if dense rainforest",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "24 generate video Present-day dense Amazon forest, used as a visual representation of an older scholarly assumption. Hold on apparently untouched vegetation, then introduce subtle archaeological terrain traces beneath it as the narration turns to the evidence. Keep the transition understated and observational. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 25,
+    "startTime": 162.0,
+    "endTime": 166.0,
+    "duration": 4,
+    "narration": "and large organized societies couldn't exist together.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "25 generate video Continue the same visual idea: the apparently dense forest remains in view while a restrained terrain overlay reveals that organized settlements can exist beneath it. The transition should make the contradiction clear without implying that the entire Amazon was urbanized. Keep the beat immediate: one clear visual change before the cut. No text, captions, watermarks, or logos.",
+    "pacing": "fast_visual_beat"
+  },
+  {
+    "sceneNo": 26,
+    "startTime": 166.0,
+    "endTime": 176.0,
+    "duration": 10,
+    "narration": "The archaeological evidence tells us the situation was much more complicated. There is even a historical clue that was recorded centuries before modern LIDAR.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "26 generate video Documentary transition from archaeological evidence to the 16th-century record. Show an old expedition manuscript on a table, a hand turning a page, then a subtle map of the Amazon river system emerging beside it. Keep the evidence grounded and tactile rather than turning the manuscript into a magical prop. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_3_beat"
+  },
+  {
+    "sceneNo": 27,
+    "startTime": 176.0,
+    "endTime": 186.0,
+    "duration": 10,
+    "narration": "In 1541 and 1542, the expedition led by Francisco de Oriana traveled down the Amazon",
+    "visualType": "video",
+    "referenceIds": [
+      "REF-02",
+      "REF-08"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "27 generate video Historical reconstruction of Francisco de Orellana's 1541–1542 expedition traveling down the Amazon by river. Spanish expedition boats move steadily through the river while the camera observes from a nearby boat. Keep the focus on travel and what the expedition encountered along the banks, with period-appropriate boats and clothing. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_3_beat"
+  },
+  {
+    "sceneNo": 28,
+    "startTime": 186.0,
+    "endTime": 190.0,
+    "duration": 4,
+    "narration": "and Friar Gaspard de Carvajal recorded what the expedition encountered.",
+    "visualType": "video",
+    "referenceIds": [
+      "REF-02",
+      "REF-08"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "28 generate video Closer view aboard the same 1541–1542 expedition. Friar Gaspar de Carvajal records observations in a handwritten journal while the boat moves downriver; the riverbank passes naturally behind him. Avoid a staged writing pose—show brief writing, looking up, then returning to the page. Keep the shot immediate: one clear visual change before the cut. No text, captions, watermarks, or logos.",
+    "pacing": "fast_visual_beat"
+  },
+  {
+    "sceneNo": 29,
+    "startTime": 190.0,
+    "endTime": 196.0,
+    "duration": 6,
+    "narration": "His account described substantial settlements and populations along parts of the river.",
+    "visualType": "video",
+    "referenceIds": [
+      "REF-02",
+      "REF-08"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "29 generate video From the expedition's river-level viewpoint, reveal a substantial riverside settlement with houses, cultivated ground, people, and activity along the bank. The settlement should feel like an ordinary inhabited river community, not a giant fantasy city. The boat continues moving as the settlement passes through frame. Keep the shot brisk, with one clear change in camera position or subject action. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_documentary"
+  },
+  {
+    "sceneNo": 30,
+    "startTime": 196.0,
+    "endTime": 202.0,
+    "duration": 6,
+    "narration": "For a long time, historians debated how much of those descriptions should be trusted.",
+    "visualType": "video",
+    "referenceIds": [
+      "REF-02"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "30 generate video Historical documentary comparison: begin with a populated riverbank associated with the expedition account, then transition to a later, quieter riverbank overtaken by vegetation. Keep the transition simple and observational, conveying why historians questioned the descriptions without declaring which account was right. Keep the shot brisk, with one clear change in camera position or subject action. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_documentary"
+  },
+  {
+    "sceneNo": 31,
+    "startTime": 202.0,
+    "endTime": 210.0,
+    "duration": 8,
+    "narration": "Some of the expedition's claims were extraordinary and later Europeans encountered an Amazon that looked very different.",
+    "visualType": "video",
+    "referenceIds": [
+      "REF-02"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "31 generate video Continue the historical comparison. Briefly show the scale suggested by the expedition account, then cut to a later period in which the riverbank appears much less populated and more overgrown. The contrast should raise the question of what changed, without visually asserting a single cause. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 32,
+    "startTime": 210.0,
+    "endTime": 218.0,
+    "duration": 8,
+    "narration": "Disease, violence, and disruption had already transformed indigenous populations in many areas.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "32 generate video Quiet historical reconstruction of an abandoned Amazonian riverside settlement after major population disruption. Empty house remains, overgrown paths, and vegetation reclaiming cleared ground suggest loss without showing graphic violence or suffering. Keep the atmosphere subdued and factual. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 33,
+    "startTime": 218.0,
+    "endTime": 228.0,
+    "duration": 10,
+    "narration": "But archaeology is now providing independent evidence that parts of pre-Columbian Amazonia really did contain substantial settlements and engineered landscapes.",
+    "visualType": "motion_graphic",
+    "referenceIds": [
+      "REF-06"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "33 generate video Documentary archaeology montage: researchers examine excavation layers, map earthworks, and compare archaeological evidence with the older river accounts. Include a brief transition from excavation details to a wider reconstructed settlement landscape. The evidence should feel like independent archaeology rather than a confirmation graphic. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_3_beat"
+  },
+  {
+    "sceneNo": 34,
+    "startTime": 228.0,
+    "endTime": 234.0,
+    "duration": 6,
+    "narration": "That doesn't mean every detail in Coutava Hall's account was correct.",
+    "visualType": "video",
+    "referenceIds": [
+      "REF-08"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "34 generate video Measured documentary transition: an old expedition manuscript fades into archaeological evidence while the reconstructed settlement remains only partly visible. The visual should communicate that individual details of the historical account can be questioned while the broader evidence for substantial communities can still be examined. Keep the beat immediate: one clear visual change before the cut. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_documentary"
+  },
+  {
+    "sceneNo": 35,
+    "startTime": 234.0,
+    "endTime": 242.0,
+    "duration": 8,
+    "narration": "It means the basic idea that large communities once existed along parts of the Amazon is no longer as difficult to accept.",
+    "visualType": "video",
+    "referenceIds": [
+      "REF-08"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "35 generate video Wide archaeological reconstruction of a substantial Amazonian riverside community, then a gentle transition to the same location as modern forest. The visual lands on the idea that large communities once existed even where little is visible today. Keep the shot brisk, with one clear change in camera position or subject action. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 36,
+    "startTime": 242.0,
+    "endTime": 250.0,
+    "duration": 8,
+    "narration": "And that brings us to one of the most famous legends ever attached to South America, El Dorado.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "36 generate video Visual introduction to the El Dorado legend. A small amount of gold glints in shadow, then the image transitions to a historical map and distant South American landscape. Avoid showing a literal giant golden city; the mystery should come from the story itself. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 37,
+    "startTime": 250.0,
+    "endTime": 260.0,
+    "duration": 10,
+    "narration": "For centuries, European explorers searched for a place of unimaginable wealth, gold, precious objects, a powerful ruler,",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "37 generate video 16th–17th century European explorers travel deeper into unfamiliar South American territory, studying rivers and maps while searching for wealth. Show practical expedition movement—boats, packs, rough paths, and uncertain navigation—rather than an exaggerated treasure hunt. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_3_beat"
+  },
+  {
+    "sceneNo": 38,
+    "startTime": 260.0,
+    "endTime": 268.0,
+    "duration": 8,
+    "narration": "somewhere deep in the interior they believed an extraordinary kingdom might be waiting.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "38 generate video Continue the El Dorado search. Explorers move farther inland through difficult terrain, looking across rivers and distant forest while imagining a powerful kingdom somewhere beyond the visible landscape. Keep the imagined destination abstract rather than showing a fantasy city. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 39,
+    "startTime": 268.0,
+    "endTime": 272.0,
+    "duration": 4,
+    "narration": "People died looking for it.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "39 generate video Brief historical reconstruction of an exhausted explorer at the edge of the forest, sitting or lying beside abandoned equipment after a failed journey. No graphic injury; the environment and fatigue communicate the cost of the search. Keep the beat immediate: one clear visual change before the cut. No text, captions, watermarks, or logos.",
+    "pacing": "fast_visual_beat"
+  },
+  {
+    "sceneNo": 40,
+    "startTime": 272.0,
+    "endTime": 276.0,
+    "duration": 4,
+    "narration": "But the original story was different. El Dorado wasn't originally the name of a golden city.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "40 generate video Historical transition from the popular image of a golden city to the original El Dorado story: a gilded Muisca ruler and ceremonial imagery replace the imagined city. Keep the change clear and restrained, with no fantasy architecture. Keep the beat immediate: one clear visual change before the cut. No text, captions, watermarks, or logos.",
+    "pacing": "fast_visual_beat"
+  },
+  {
+    "sceneNo": 41,
+    "startTime": 276.0,
+    "endTime": 284.0,
+    "duration": 8,
+    "narration": "It referred to a gilded one associated with a Muisca ruler and a ceremony involving gold and lake Guatavita.",
+    "visualType": "video",
+    "referenceIds": [
+      "REF-03",
+      "REF-07"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "41 generate video Reconstruction of a Muisca ceremonial scene at Lake Guatavita, pre-Colombian Colombia. A ruler covered in gold dust stands on a ceremonial raft while attendants and offerings surround the lake ritual. Treat the scene as archaeological-historical reconstruction, with natural human movement and no exaggerated treasure spectacle. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 42,
+    "startTime": 284.0,
+    "endTime": 290.0,
+    "duration": 6,
+    "narration": "Somewhere along the way, a story about a person became a story about a kingdom.",
+    "visualType": "motion_graphic",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "42 generate video Simple visual evolution of the El Dorado story: begin with one gilded ruler, then transition to a map and increasingly elaborate illustrations of a kingdom. The visuals should show how the story grew as it traveled, not suggest that the larger city actually existed. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_documentary"
+  },
+  {
+    "sceneNo": 43,
+    "startTime": 290.0,
+    "endTime": 296.0,
+    "duration": 6,
+    "narration": "Then the kingdom became a city, and the farther the story traveled, the bigger the legend became.",
+    "visualType": "motion_graphic",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "43 generate video Continue the legend's transformation through successive historical illustrations: person, kingdom, then imagined city. Each stage becomes slightly more elaborate while remaining clearly an illustration or map-based interpretation. Avoid a literal claim that a golden city existed. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_documentary"
+  },
+  {
+    "sceneNo": 44,
+    "startTime": 296.0,
+    "endTime": 302.0,
+    "duration": 6,
+    "narration": "The golden city was never found, but there is an interesting twist.",
+    "visualType": "video",
+    "referenceIds": [
+      "REF-06"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "44 generate video A brief return to the physical landscape: empty forest and distant hills replace the imagined golden city. The visual should communicate that the legendary city was never found, while leaving the historical question open. Keep the beat immediate: one clear visual change before the cut. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_documentary"
+  },
+  {
+    "sceneNo": 45,
+    "startTime": 302.0,
+    "endTime": 310.0,
+    "duration": 8,
+    "narration": "The explorers were searching for treasure in a region that really did contain complex societies and landscapes they barely understood.",
+    "visualType": "video",
+    "referenceIds": [
+      "REF-06"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "45 generate video Historical documentary contrast: explorers search for gold and imagined wealth while the surrounding landscape contains real settlements, cultivated areas, and engineered terrain they do not recognize. Keep the contrast subtle and grounded, avoiding the claim that El Dorado itself existed. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 46,
+    "startTime": 310.0,
+    "endTime": 320.0,
+    "duration": 10,
+    "narration": "They were looking for gold while much of the actual history remained invisible. And the Amazon is extremely good at making human traces disappear.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "46 generate video Transition from a small glint of searched-for gold to an ordinary forest floor where faint traces of an old road disappear beneath vegetation. The visual point is that explorers could miss human history while looking for treasure. Keep the shot brisk, with one clear change in camera position or subject action. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_3_beat"
+  },
+  {
+    "sceneNo": 47,
+    "startTime": 320.0,
+    "endTime": 330.0,
+    "duration": 10,
+    "narration": "Give a road hundreds of years without maintenance and vegetation begins taking it back. Roots break through the ground. Soil accumulates.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "47 generate video Close documentary view of an old engineered road being reclaimed by forest. Roots push through compacted soil, leaf litter gathers, and small plants grow across the path. Use a subtle time-passage effect rather than a magical instant transformation. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_3_beat"
+  },
+  {
+    "sceneNo": 48,
+    "startTime": 330.0,
+    "endTime": 338.0,
+    "duration": 8,
+    "narration": "Trees grow across the old path. Eventually, something that was once carefully engineered can look completely natural.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "48 generate video Continue the same road over a longer passage of time. Trees establish across the old path and leaf litter gradually blends it into the surrounding forest floor. By the end, the former road is difficult to distinguish from natural ground. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 49,
+    "startTime": 338.0,
+    "endTime": 346.0,
+    "duration": 8,
+    "narration": "Now, imagine that happening to an entire settlement. That's why Lidar has been so important.",
+    "visualType": "video",
+    "referenceIds": [
+      "REF-06"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "49 generate video Wide present-day Amazon landscape where an apparently natural forest covers a much larger archaeological footprint. Use a gentle aerial pull-back to suggest that an entire settlement can disappear beneath vegetation, then transition toward a restrained LIDAR terrain view. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 50,
+    "startTime": 346.0,
+    "endTime": 352.0,
+    "duration": 6,
+    "narration": "It isn't just revealing individual ruins. In some places, it is revealing the shape of entire landscapes.",
+    "visualType": "motion_graphic",
+    "referenceIds": [
+      "REF-06"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "50 generate video Clean LIDAR documentary animation. Start with one visible archaeological feature, then pull outward to reveal roads, earthworks, canals, and settlement shapes across the surrounding landscape. Keep the terrain realistic and the animation restrained, showing how LIDAR changes the scale of what researchers can see. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_documentary"
+  },
+  {
+    "sceneNo": 51,
+    "startTime": 352.0,
+    "endTime": 360.0,
+    "duration": 8,
+    "narration": "There is another part of the Amazon story that requires even more care. The indigenous peoples who still live there.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "51 generate video Present-day Amazon forest shown with restraint and respect. Do not show identifiable isolated people or attempt to depict protected communities directly. Instead, move through a quiet forest landscape with signs of human presence kept distant and non-specific, allowing the narration to shift from ancient history to people who live there today. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 52,
+    "startTime": 360.0,
+    "endTime": 370.0,
+    "duration": 10,
+    "narration": "Brazil's Funai recognizes confirmed groups living in voluntary isolation, along with other records under investigation.",
+    "visualType": "motion_graphic",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "52 generate video Restrained documentary map of Brazil's Amazon region. Show broad, non-specific protected or restricted areas and a simple distinction between confirmed and under-investigation records, without revealing precise locations of isolated groups. Keep the map movement subtle and informational, with no sensational mystery graphics. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_3_beat"
+  },
+  {
+    "sceneNo": 53,
+    "startTime": 370.0,
+    "endTime": 376.0,
+    "duration": 6,
+    "narration": "These communities aren't simply mysterious groups waiting to be discovered. Their isolation has a history.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "53 generate video Present-day forest viewed from a respectful distance. Avoid showing identifiable isolated communities or staged 'mystery tribe' imagery. Instead, show an empty forest path, distant signs of human presence, and the landscape continuing beyond the camera, emphasizing that isolation has a history and is not an invitation to discover people. Keep the shot brisk, with one clear change in camera position or subject action. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_documentary"
+  },
+  {
+    "sceneNo": 54,
+    "startTime": 376.0,
+    "endTime": 386.0,
+    "duration": 10,
+    "narration": "Previous contact with outsiders has brought disease, violence, displacement, and devastating population loss to indigenous communities.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "54 generate video Quiet documentary reconstruction using an abandoned or overgrown riverside settlement to represent the historical consequences of outside contact. Empty structures, reclaimed paths, and disturbed vegetation suggest disease, violence, displacement, and population loss without depicting graphic suffering. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_3_beat"
+  },
+  {
+    "sceneNo": 55,
+    "startTime": 386.0,
+    "endTime": 394.0,
+    "duration": 8,
+    "narration": "For people who have had little or no previous exposure to certain diseases, even an ordinary infection can become extremely dangerous.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "55 generate video Close present-day documentary detail of a person from an unidentified community washing hands, preparing food, or moving through a village environment, shown only if the scene can be depicted generically and respectfully. Alternatively use a close-up of ordinary medical-risk imagery such as an isolated campfire and untouched forest, avoiding invented tribal identity. Keep the emphasis on vulnerability to unfamiliar infection rather than spectacle. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 56,
+    "startTime": 394.0,
+    "endTime": 402.0,
+    "duration": 8,
+    "narration": "That's why Brazilian authorities have policies designed to protect isolated peoples from forced contact.",
+    "visualType": "motion_graphic",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "56 generate video Documentary map and field-protection imagery showing Brazilian authorities maintaining distance from an isolated territory: river patrol boat or marked access boundary seen from far away, with no precise location and no contact with residents. The visual should communicate protection from forced contact, not surveillance spectacle. Keep the shot brisk, with one clear change in camera position or subject action. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 57,
+    "startTime": 402.0,
+    "endTime": 408.0,
+    "duration": 6,
+    "narration": "Their presence is also a reminder that the Amazon isn't just a place with a hidden past.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "57 generate video Present-day Amazon landscape with subtle signs of ongoing human life—distant river travel, cultivated shoreline, smoke from a far-off cooking fire—without identifying a specific community. The forest remains active and inhabited rather than empty wilderness. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_documentary"
+  },
+  {
+    "sceneNo": 58,
+    "startTime": 408.0,
+    "endTime": 416.0,
+    "duration": 8,
+    "narration": "It is a place where people live, have lived for generations, and continue to make their own choices about contact with the outside world.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "58 generate video Respectful present-day Amazon montage showing different non-identifying forms of life and work along rivers and forest edges. Keep people distant and ordinary, emphasizing continuity and choice rather than mystery. Avoid staged 'tribe' imagery. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 59,
+    "startTime": 416.0,
+    "endTime": 424.0,
+    "duration": 8,
+    "narration": "And if you want to understand just how difficult the environment can be for an outsider, consider Ed Stafford.",
+    "visualType": "video",
+    "referenceIds": [
+      "REF-01"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "59 generate video Documentary transition to Ed Stafford's 2008 Amazon journey. Show a lone modern expedition walker moving beside the Amazon River with a backpack, practical gear, and muddy terrain. The camera stays observational, emphasizing the physical scale of the environment rather than heroic posing. Keep the shot brisk, with one clear change in camera position or subject action. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 60,
+    "startTime": 424.0,
+    "endTime": 434.0,
+    "duration": 10,
+    "narration": "In 2008, Stafford began an attempt to walk the length of the Amazon River. He completed the journey after 860 days,",
+    "visualType": "motion_graphic",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "60 generate video Simple documentary timeline animation beginning in 2008 and extending across the Amazon journey. A small marker advances steadily along the river's length, establishing the long duration of the expedition without filling the screen with text. Keep the graphic clean and restrained. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_3_beat"
+  },
+  {
+    "sceneNo": 61,
+    "startTime": 434.0,
+    "endTime": 440.0,
+    "duration": 6,
+    "narration": "becoming the first person recognized by Guinness World Records to walk the length of the river.",
+    "visualType": "video",
+    "referenceIds": [
+      "REF-01"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "61 generate video Modern documentary reconstruction of Ed Stafford walking along difficult Amazon terrain, intercut with a simple map line showing the route continuing down the river. The journey should feel long and repetitive rather than like a staged action sequence. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_documentary"
+  },
+  {
+    "sceneNo": 62,
+    "startTime": 440.0,
+    "endTime": 446.0,
+    "duration": 6,
+    "narration": "He had to deal with heat, rain, mud, insects, rivers, exhaustion,",
+    "visualType": "video",
+    "referenceIds": [
+      "REF-01"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "62 generate video Brief, natural montage from the Amazon journey: heat and sweat, rain hitting the trail, mud pulling at boots, insects around the walker, and river crossings. Keep each detail grounded and quick, with no exaggerated danger. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_documentary"
+  },
+  {
+    "sceneNo": 63,
+    "startTime": 446.0,
+    "endTime": 452.0,
+    "duration": 6,
+    "narration": "and the constant problem of simply moving forward through an enormous and difficult environment.",
+    "visualType": "video",
+    "referenceIds": [
+      "REF-01"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "63 generate video Continue the journey with the simple problem of forward movement: Stafford wades through mud, adjusts his pack, then keeps walking along difficult riverbank terrain. The camera stays close enough to feel physical but not dramatic. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_documentary"
+  },
+  {
+    "sceneNo": 64,
+    "startTime": 452.0,
+    "endTime": 460.0,
+    "duration": 8,
+    "narration": "You don't need a mythical monster to make the Amazon dangerous. The landscape itself is enough.",
+    "visualType": "video",
+    "referenceIds": [
+      "REF-01"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "64 generate video Wide present-day Amazon landscape with the expedition walker reduced to a small figure against river, forest, mud, and distance. Let the environment dominate the frame so the danger feels environmental rather than monster-driven. Keep the shot brisk, with one clear change in camera position or subject action. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 65,
+    "startTime": 460.0,
+    "endTime": 468.0,
+    "duration": 8,
+    "narration": "But the forest also contains natural phenomena that sound like legends until you examine them closely.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "65 generate video Present-day rainforest transitions from ordinary forest sounds and river movement to an unusual natural feature. Begin with familiar jungle scenery, then reveal steam or unusual water ahead, setting up the Boiling River without supernatural imagery. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 66,
+    "startTime": 468.0,
+    "endTime": 474.0,
+    "duration": 6,
+    "narration": "In Peru, there's a geothermal river known as Chennai-Tempishka, often called the Boiling River.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "66 generate video Present-day Peru, Shanay-Timpishka, often called the Boiling River. Follow the river through dense rainforest, then move closer to visibly steaming, unusually warm water and mineral-stained banks. Keep the phenomenon natural and geologically grounded. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_documentary"
+  },
+  {
+    "sceneNo": 67,
+    "startTime": 474.0,
+    "endTime": 480.0,
+    "duration": 6,
+    "narration": "Its waters can become dangerously hot because of geothermal activity.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "67 generate video Close documentary view of the Boiling River's hot water and rising steam. Show ripples, heat haze, and a cautious observer keeping distance from the water's edge. Avoid fantasy effects; the heat should be communicated through steam and behavior. Keep the shot brisk, with one clear change in camera position or subject action. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_documentary"
+  },
+  {
+    "sceneNo": 68,
+    "startTime": 480.0,
+    "endTime": 488.0,
+    "duration": 8,
+    "narration": "The surrounding rainforest looks ordinary, but the river itself can reach temperatures capable of causing severe burns.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "68 generate video Wider view of the Boiling River inside ordinary rainforest. The surrounding vegetation looks familiar while the river releases visible steam and appears unnaturally hot, creating the contrast described by the narration. Keep the visual grounded in real environmental conditions. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 69,
+    "startTime": 488.0,
+    "endTime": 498.0,
+    "duration": 10,
+    "narration": "And then there are the stories connected to the rivers. Across Amazonian traditions, enormous serpents appear in stories associated with water and the natural world.",
+    "visualType": "video",
+    "referenceIds": [
+      "REF-05"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "69 generate video Amazon river at dusk or under soft daylight, followed by a restrained symbolic image of a large serpent motif in traditional Amazonian storytelling—carved, painted, or shadowed rather than a realistic giant monster. Transition back to the real river so the distinction between tradition and zoology remains clear. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_3_beat"
+  },
+  {
+    "sceneNo": 70,
+    "startTime": 498.0,
+    "endTime": 504.0,
+    "duration": 6,
+    "narration": "One well-known example is Yakumama, often translated as Mother of Water.",
+    "visualType": "video",
+    "referenceIds": [
+      "REF-05"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "70 generate video Respectful symbolic depiction of Yakumama as a traditional 'Mother of Water' serpent motif associated with Amazonian storytelling. Use a carved or painted serpent image near the river, then let the camera return to the real water and forest. Do not present the creature as a documented animal. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_documentary"
+  },
+  {
+    "sceneNo": 71,
+    "startTime": 504.0,
+    "endTime": 510.0,
+    "duration": 6,
+    "narration": "Yakumama belongs to mythology and tradition, not zoology,",
+    "visualType": "video",
+    "referenceIds": [
+      "REF-05"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "71 generate video Documentary transition from the Yakumama symbolic motif to a real-world river and forest. The symbolic serpent fades or moves out of frame while the natural environment remains unchanged, visually separating mythology and zoology. Keep the beat immediate: one clear visual change before the cut. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_documentary"
+  },
+  {
+    "sceneNo": 72,
+    "startTime": 510.0,
+    "endTime": 516.0,
+    "duration": 6,
+    "narration": "and there is no good scientific evidence for an enormous living serpent of the kind described in modern retellings.",
+    "visualType": "video",
+    "referenceIds": [
+      "REF-05"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "72 generate video Present-day Amazon river and forest with the Yakumama motif only briefly visible as a cultural illustration before disappearing. The final image should be an ordinary river with no giant animal, reinforcing that there is no scientific evidence for such a living serpent. Keep the shot brisk, with one clear change in camera position or subject action. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_documentary"
+  },
+  {
+    "sceneNo": 73,
+    "startTime": 516.0,
+    "endTime": 522.0,
+    "duration": 6,
+    "narration": "But there really was a giant snake in prehistoric South America.",
+    "visualType": "video",
+    "referenceIds": [
+      "REF-05"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "73 generate video Fossil excavation in northern Colombia transitions into a reconstruction of Titanoboa in a prehistoric tropical environment. The shift should clearly move from mythology to a real extinct animal known from fossils, with no suggestion that it survives today. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_documentary"
+  },
+  {
+    "sceneNo": 74,
+    "startTime": 522.0,
+    "endTime": 530.0,
+    "duration": 8,
+    "narration": "Its name was Tita no Boa, and this is where we need to be precise. Tita no Boa did not live in the modern Amazon basin.",
+    "visualType": "video",
+    "referenceIds": [
+      "REF-04"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "74 generate video Present-day fossil excavation in northern Colombia, followed by a restrained transition to Titanoboa reconstruction. Include a simple geographic cue separating the Cerrejón Formation from the modern Amazon basin so the animal is not visually placed in today's Amazon. Keep the scientific correction clear through the imagery rather than dramatic text. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 75,
+    "startTime": 530.0,
+    "endTime": 536.0,
+    "duration": 6,
+    "narration": "Its fossils were discovered in the Sedehone formation in what is now northern Colombia.",
+    "visualType": "video",
+    "referenceIds": [
+      "REF-04"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "75 generate video Close documentary view of Titanoboa fossil material embedded in rock from the Cerrejón Formation in northern Colombia. A geologist carefully exposes the fossil surface with a brush, then the camera briefly reveals the surrounding sedimentary layer. Keep the find tactile and archaeological, not polished CGI. Keep the shot brisk, with one clear change in camera position or subject action. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_documentary"
+  },
+  {
+    "sceneNo": 76,
+    "startTime": 536.0,
+    "endTime": 544.0,
+    "duration": 8,
+    "narration": "Around 58 to 60 million years ago, that region was a hot tropical rainforest environment.",
+    "visualType": "video",
+    "referenceIds": [
+      "REF-04"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "76 generate video Paleocene tropical rainforest and swamp environment in what is now northern Colombia, around 58–60 million years ago. Titanoboa moves slowly through warm shallow water among dense vegetation, with believable animal movement and scale. Do not place it in the modern Amazon or make it behave like a movie monster. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 77,
+    "startTime": 544.0,
+    "endTime": 552.0,
+    "duration": 8,
+    "narration": "Tita no Boa may have reached roughly 42 to 49 feet in length, making it one of the largest snakes known to science.",
+    "visualType": "video",
+    "referenceIds": [
+      "REF-04"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "77 generate video Side view of a Titanoboa moving through a Paleocene tropical swamp, with nearby vegetation and smaller animals providing scale. The snake's length should feel enormous but physically believable, with slow muscular movement and realistic interaction with the water. Keep the shot brisk, with one clear change in camera position or subject action. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 78,
+    "startTime": 552.0,
+    "endTime": 560.0,
+    "duration": 8,
+    "narration": "It wasn't a monster hiding in an Amazon river today. It was a prehistoric animal from a completely different world.",
+    "visualType": "video",
+    "referenceIds": [
+      "REF-04"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "78 generate video Visual contrast between prehistoric northern Colombia and the modern Amazon. Briefly show Titanoboa in its ancient swamp, then cut to a present-day Amazon river with no giant snake. The contrast should make clear that Titanoboa was prehistoric and not a monster living in today's Amazon. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 79,
+    "startTime": 560.0,
+    "endTime": 566.0,
+    "duration": 6,
+    "narration": "But its existence tells us something fascinating about ancient tropical South America.",
+    "visualType": "motion_graphic",
+    "referenceIds": [
+      "REF-04"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "79 generate video Clean documentary graphic showing Titanoboa's fossil evidence leading to a simple outline reconstruction of the animal, then a small map locating the Cerrejón Formation in northern Colombia. Keep the graphic scientific and restrained, avoiding monster-movie styling. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_documentary"
+  },
+  {
+    "sceneNo": 80,
+    "startTime": 566.0,
+    "endTime": 574.0,
+    "duration": 8,
+    "narration": "The ecosystems of the distant past could support animals on a scale that seems almost impossible when compared with the world we know today.",
+    "visualType": "motion_graphic",
+    "referenceIds": [
+      "REF-04"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "80 generate video Paleocene tropical ecosystem reconstruction in northern Colombia: Titanoboa moves through dense swamp vegetation while the camera briefly reveals the warm, water-rich environment and other prehistoric animals at a believable distance. The emphasis is on an ecosystem capable of supporting very large animals, not on the snake as a monster. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 81,
+    "startTime": 574.0,
+    "endTime": 582.0,
+    "duration": 8,
+    "narration": "And the same problem of separating popular stories from scientific reality appears again when we talk about the Amazon itself.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "81 generate video Wide present-day Amazon canopy. Transition from the Titanoboa sequence back to the modern forest while the camera rises slightly, setting up the shift from legends to another widely repeated claim about the Amazon itself. Keep the transition visual and understated. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 82,
+    "startTime": 582.0,
+    "endTime": 586.0,
+    "duration": 4,
+    "narration": "You've probably heard it called the lungs of the earth.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "82 generate video Iconic wide Amazon canopy shot in the present day. The forest breathes with wind and cloud movement while the camera holds steady, giving space for the phrase 'lungs of the Earth' to land without literalizing it. Keep the beat immediate: one clear visual change before the cut. No text, captions, watermarks, or logos.",
+    "pacing": "fast_visual_beat"
+  },
+  {
+    "sceneNo": 83,
+    "startTime": 586.0,
+    "endTime": 592.0,
+    "duration": 6,
+    "narration": "You've probably also heard that the Amazon produces 20% of the world's oxygen.",
+    "visualType": "motion_graphic",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "83 generate video Simple documentary graphic introducing the commonly repeated '20%' oxygen claim. Show the Amazon as one part of a larger global oxygen system rather than presenting the number as established fact. Keep the graphic visually neutral so the narration can immediately question it. Keep the shot brisk, with one clear change in camera position or subject action. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_documentary"
+  },
+  {
+    "sceneNo": 84,
+    "startTime": 592.0,
+    "endTime": 598.0,
+    "duration": 6,
+    "narration": "The phrase is memorable. The number is repeated everywhere. But the science is more complicated.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "84 generate video Documentary visual of the '20%' claim becoming visually smaller and less certain over an Amazon canopy, then transitioning toward a broader global atmosphere and ocean view. The graphic should communicate that the slogan is memorable but scientifically incomplete, without using aggressive debunking effects. Keep the shot brisk, with one clear change in camera position or subject action. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_documentary"
+  },
+  {
+    "sceneNo": 85,
+    "startTime": 598.0,
+    "endTime": 608.0,
+    "duration": 10,
+    "narration": "The Amazon produces oxygen through photosynthesis. But plants, animals, fungi, and microorganisms also consume oxygen and break down organic matter.",
+    "visualType": "motion_graphic",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "85 generate video Clean science animation of photosynthesis and respiration inside a forest ecosystem. Plants take in carbon dioxide and release oxygen while animals, fungi, microbes, and plants also consume oxygen and organic matter is decomposed. Keep arrows simple and slow enough to understand, with no futuristic interface. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_3_beat"
+  },
+  {
+    "sceneNo": 86,
+    "startTime": 608.0,
+    "endTime": 616.0,
+    "duration": 8,
+    "narration": "Over long periods, much of the oxygen produced within the forest is balanced by respiration and decomposition.",
+    "visualType": "motion_graphic",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "86 generate video Continue the ecosystem animation. Oxygen produced by photosynthesis circulates through the forest while respiration and decomposition return gases and nutrients to the system. The visual balance should make clear why gross oxygen production is not the same as net atmospheric accumulation. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 87,
+    "startTime": 616.0,
+    "endTime": 622.0,
+    "duration": 6,
+    "narration": "Meanwhile, NOAA estimates that roughly half of Earth's oxygen production comes from the ocean,",
+    "visualType": "motion_graphic",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "87 generate video Clean global map and ocean animation showing that a large share of Earth's oxygen production comes from oceanic photosynthetic organisms. Transition from the Amazon basin to the open ocean, where microscopic plankton occupy the sunlit surface layer. Keep the science graphic simple and geographically credible. Keep the shot brisk, with one clear change in camera position or subject action. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_documentary"
+  },
+  {
+    "sceneNo": 88,
+    "startTime": 622.0,
+    "endTime": 628.0,
+    "duration": 6,
+    "narration": "with microscopic photosynthetic organisms such as phytoplankton playing a major role.",
+    "visualType": "motion_graphic",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "88 generate video Microscopic-style but scientifically restrained visualization of phytoplankton in the sunlit ocean, followed by a wider ocean surface view. Keep the organisms small and natural rather than glowing fantasy particles. The visual should support the narration's point that ocean life plays a major role in global oxygen production. Keep the shot brisk, with one clear change in camera position or subject action. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_documentary"
+  },
+  {
+    "sceneNo": 89,
+    "startTime": 628.0,
+    "endTime": 634.0,
+    "duration": 6,
+    "narration": "So the Amazon isn't a giant oxygen machine producing one-fifth of the air humanity breathes.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "89 generate video Present-day Amazon canopy with the earlier '20%' concept fading away, replaced by a broader view of the forest as part of a global carbon, water, and climate system. Avoid a dramatic 'myth destroyed' effect; make the change feel like a calm correction. Keep the shot brisk, with one clear change in camera position or subject action. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_documentary"
+  },
+  {
+    "sceneNo": 90,
+    "startTime": 634.0,
+    "endTime": 642.0,
+    "duration": 8,
+    "narration": "And correcting that myth doesn't make the forest less important. It points us toward what actually makes it important.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "90 generate video Wide present-day Amazon forest in natural daylight, with clouds, canopy movement, rivers, and distant rain visible. The camera slowly reveals more of the living system rather than focusing on oxygen alone. The mood becomes more expansive and informative, not triumphant. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 91,
+    "startTime": 642.0,
+    "endTime": 652.0,
+    "duration": 10,
+    "narration": "The Amazon is a huge part of the global carbon cycle. Its vegetation stores carbon and moves enormous amounts of water between the ground and atmosphere.",
+    "visualType": "motion_graphic",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "91 generate video Clean documentary animation of the Amazon carbon and water cycles. Show carbon moving between atmosphere, vegetation, and soil while water rises from the forest, forms clouds, and returns as rainfall. Use simple arrows and real landscape imagery instead of glossy infographic effects. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_3_beat"
+  },
+  {
+    "sceneNo": 92,
+    "startTime": 652.0,
+    "endTime": 658.0,
+    "duration": 6,
+    "narration": "That water cycle influences rainfall, while the forest supports extraordinary biodiversity",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "92 generate video Aerial present-day Amazon sequence showing rain falling over forest, rivers moving through the basin, and dense vegetation responding to water. Briefly reveal varied habitats within the same landscape. Keep the movement natural and continuous, linking water cycle and biodiversity. Keep the shot brisk, with one clear change in camera position or subject action. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_documentary"
+  },
+  {
+    "sceneNo": 93,
+    "startTime": 658.0,
+    "endTime": 664.0,
+    "duration": 6,
+    "narration": "and millions of people with deep cultural and historical relationships to these landscapes.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "93 generate video Present-day Amazon landscape with non-identifying glimpses of people living and working along rivers and forest edges, followed by the surrounding ecosystem. Keep people ordinary and respectful rather than exoticized. The visual should connect biodiversity with long-standing human relationships to the landscape. Keep the shot brisk, with one clear change in camera position or subject action. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_documentary"
+  },
+  {
+    "sceneNo": 94,
+    "startTime": 664.0,
+    "endTime": 674.0,
+    "duration": 10,
+    "narration": "So the real story isn't that the Amazon is keeping the planet alive by manufacturing oxygen. It's that the forest is part of a much larger system involving carbon,",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "94 generate video Wide present-day Amazon sequence combining forest canopy, river, rainfall, and distant human presence. Let the camera move naturally across the landscape as carbon, water, climate, and life become the visual theme. Avoid turning the forest into a single 'planet-saving' symbol. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_3_beat"
+  },
+  {
+    "sceneNo": 95,
+    "startTime": 674.0,
+    "endTime": 678.0,
+    "duration": 4,
+    "narration": "water, climate, and life.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "95 generate video Brief continuation of the same Amazon landscape: canopy, water, clouds, and living forest in one natural frame. Use a gentle camera drift so the short clip feels like a continuation rather than a new establishing shot. Keep the beat immediate: one clear visual change before the cut. No text, captions, watermarks, or logos.",
+    "pacing": "fast_visual_beat"
+  },
+  {
+    "sceneNo": 96,
+    "startTime": 678.0,
+    "endTime": 686.0,
+    "duration": 8,
+    "narration": "And that system is changing. When forests are cleared or burned, carbon stored in vegetation and soils can enter the atmosphere.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "96 generate video Present-day aerial view of a forest edge where clearing or fire has altered the landscape. Show a realistic transition between intact forest and disturbed ground, with smoke or cleared vegetation kept restrained and non-sensational. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 97,
+    "startTime": 686.0,
+    "endTime": 694.0,
+    "duration": 8,
+    "narration": "Water cycles can be disrupted, habitats disappear, and once an ecosystem has been heavily altered,",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "97 generate video Present-day altered Amazon landscape with a disrupted stream or cleared habitat beside remaining forest. Include sparse young regrowth and exposed soil to show that ecological change affects water, habitat, and structure. Avoid making the scene look like a barren apocalypse. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 98,
+    "startTime": 694.0,
+    "endTime": 698.0,
+    "duration": 4,
+    "narration": "simply planting trees doesn't instantly recreate everything that existed before.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "98 generate video Close present-day view of young planted trees in disturbed ground beside older forest. The camera moves from the new seedlings to the surrounding altered soil and habitat, visually showing that planting trees is not an instant recreation of the original ecosystem. Keep the beat immediate: one clear visual change before the cut. No text, captions, watermarks, or logos.",
+    "pacing": "fast_visual_beat"
+  },
+  {
+    "sceneNo": 99,
+    "startTime": 698.0,
+    "endTime": 708.0,
+    "duration": 10,
+    "narration": "And now you can see the pattern running through all of these stories. We look at the Amazon and think we understand what we're seeing. Then we look again.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "99 generate video Rhythmic documentary recap montage using brief callbacks: hidden archaeological road, LIDAR terrain, El Dorado ceremony, Yakumama motif, Titanoboa fossil, Amazon oxygen graphic, and living forest. Keep each callback short and visually distinct so the montage moves faster than earlier explanatory scenes. Let the shot evolve through several natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_3_beat"
+  },
+  {
+    "sceneNo": 100,
+    "startTime": 708.0,
+    "endTime": 714.0,
+    "duration": 6,
+    "narration": "The apparently empty forest contains ancient roads and settlements.",
+    "visualType": "video",
+    "referenceIds": [
+      "REF-06"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "100 generate video Brief callback to the Casarabe story: ordinary-looking forest transitions into a restrained LIDAR view of ancient roads, earthworks, and settlement platforms beneath it. Keep the reveal quick and clear. Keep the beat immediate: one clear visual change before the cut. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_documentary"
+  },
+  {
+    "sceneNo": 101,
+    "startTime": 714.0,
+    "endTime": 718.0,
+    "duration": 4,
+    "narration": "The golden city of El Dorado turns out to have grown from a much smaller story.",
+    "visualType": "video",
+    "referenceIds": [
+      "REF-07"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "101 generate video Brief callback to El Dorado: show the Muisca ceremonial gold tradition at Lake Guatavita, then let the imagined golden city disappear back into the real landscape. The visual should reinforce that the larger city grew from a smaller historical story. Keep the beat immediate: one clear visual change before the cut. No text, captions, watermarks, or logos.",
+    "pacing": "fast_visual_beat"
+  },
+  {
+    "sceneNo": 102,
+    "startTime": 718.0,
+    "endTime": 728.0,
+    "duration": 10,
+    "narration": "The legendary giant snake belongs to mythology, while a real prehistoric giant snake lived millions of years ago in what is now Columbia.",
+    "visualType": "video",
+    "referenceIds": [
+      "REF-04",
+      "REF-05"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "102 generate video Split or sequential contrast between the Yakumama serpent motif and a fossil-based Titanoboa reconstruction. Begin with the mythic water-serpent image, then cut clearly to Titanoboa in its prehistoric northern Colombian environment. Do not place the prehistoric snake in the modern Amazon. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_3_beat"
+  },
+  {
+    "sceneNo": 103,
+    "startTime": 728.0,
+    "endTime": 736.0,
+    "duration": 8,
+    "narration": "The famous oxygen claim turns out to be far more complicated than the slogan. Even the people living in the forest have histories",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "103 generate video Brief recap of the oxygen discussion: the familiar '20%' idea gives way to a simple global oxygen-cycle graphic, then to present-day Amazon life. Use ordinary people and forest activity rather than anonymous 'tribal' imagery, emphasizing that the story is also about human perspectives and history. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 104,
+    "startTime": 736.0,
+    "endTime": 740.0,
+    "duration": 4,
+    "narration": "and perspectives that outsiders have repeatedly misunderstood.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "104 generate video Present-day Amazon scene showing non-identifying human activity at a respectful distance, then the surrounding forest continuing beyond them. The visual should suggest that outsiders have often misunderstood people living in the forest without turning anyone into a mystery subject. Keep the beat immediate: one clear visual change before the cut. No text, captions, watermarks, or logos.",
+    "pacing": "fast_visual_beat"
+  },
+  {
+    "sceneNo": 105,
+    "startTime": 740.0,
+    "endTime": 748.0,
+    "duration": 8,
+    "narration": "That's what makes the Amazon so fascinating. Not every legend is true, not every monster exists,",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "105 generate video Wide present-day Amazon rainforest at natural golden-hour light. Use small changes in wind, cloud, birds, and distant river movement while the camera observes quietly. The mood is curious and grounded: legends can be wrong while the real history beneath them can still be extraordinary. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 106,
+    "startTime": 748.0,
+    "endTime": 754.0,
+    "duration": 6,
+    "narration": "but the truth underneath some of these stories can still be extraordinary.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "106 generate video Continue through the rainforest, then reveal a subtle archaeological trace beneath vegetation—an old earthwork edge or straight path—without turning it into a glowing discovery. The visual should land on the idea that reality can be more surprising than the legend. Keep the shot brisk, with one clear change in camera position or subject action. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_documentary"
+  },
+  {
+    "sceneNo": 107,
+    "startTime": 754.0,
+    "endTime": 762.0,
+    "duration": 8,
+    "narration": "A road hidden beneath vegetation, a monumental structure rising out of the forest floor, a settlement that outsiders never knew was there,",
+    "visualType": "video",
+    "referenceIds": [
+      "REF-06"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "107 generate video Fast documentary montage of three archaeological details: a straight road emerging beneath vegetation, a monumental earthwork rising from the forest floor, and a wider settlement pattern revealed by terrain data. Use clean cuts rather than slow dissolves so the examples land quickly. Let the shot evolve through several natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 108,
+    "startTime": 762.0,
+    "endTime": 770.0,
+    "duration": 8,
+    "narration": "evidence of people who engineered landscapes that later generations mistook for untouched nature.",
+    "visualType": "video",
+    "referenceIds": [
+      "REF-06"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "108 generate video Continue the archaeological montage with people-free landscape evidence: engineered earthworks, causeways, canals, and settlement traces that now look partly natural because vegetation has reclaimed them. Keep the camera close to real terrain and avoid fantasy-city scale. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 109,
+    "startTime": 770.0,
+    "endTime": 778.0,
+    "duration": 8,
+    "narration": "So the next time you see an image of the Amazon, don't just look at the wall of green. Think about what you can't see.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "109 generate video Present-day aerial view of the Amazon's continuous green canopy. Begin with the familiar wall of green, then descend slightly or pass over a gap in the vegetation so the viewer is reminded that the visible surface is only one layer of the landscape. Keep the beat immediate: one clear visual change before the cut. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_2_beat"
+  },
+  {
+    "sceneNo": 110,
+    "startTime": 778.0,
+    "endTime": 788.0,
+    "duration": 10,
+    "narration": "Somewhere beneath that canopy could be an ancient road, a buried settlement, a landscape waiting for technology to reveal its shape.",
+    "visualType": "video",
+    "referenceIds": [
+      "REF-06"
+    ],
+    "imagePrompt": "",
+    "videoPrompt": "110 generate video Present-day aerial camera moves slowly toward and just above the Amazon canopy. Briefly reveal subtle terrain contours or archaeological traces beneath the vegetation through a restrained LIDAR-style transition, then return to the real forest surface. The hidden history should feel possible, not supernatural. Let the shot evolve through two or three natural visual beats, with continuous environmental movement. No text, captions, watermarks, or logos.",
+    "pacing": "brisk_3_beat"
+  },
+  {
+    "sceneNo": 111,
+    "startTime": 788.0,
+    "endTime": 792.06,
+    "duration": 4.06,
+    "narration": "The forest didn't destroy that history. It covered it.",
+    "visualType": "video",
+    "referenceIds": [],
+    "imagePrompt": "",
+    "videoPrompt": "111 generate video Final present-day canopy shot matching the opening composition. Leaves move naturally as the camera gently settles, then the frame becomes calm and still. Do not reveal a new ruin; end on the same green surface that began the documentary, now carrying a different meaning. Keep the beat immediate: one clear visual change before the cut. No text, captions, watermarks, or logos.",
+    "pacing": "fast_visual_beat"
+  }
+]

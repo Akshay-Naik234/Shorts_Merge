@@ -1,0 +1,680 @@
+{
+  "duration": 792.06,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.46,
+      "text": "You can walk into the Amazon and within minutes lose your sense of direction."
+    },
+    {
+      "start": 5.16,
+      "end": 10.14,
+      "text": "The trees close in around you. The ground is wet. The air is heavy."
+    },
+    {
+      "start": 11.0,
+      "end": 15.06,
+      "text": "You hear insects everywhere, birds somewhere above the canopy,"
+    },
+    {
+      "start": 15.46,
+      "end": 19.4,
+      "text": "and sometimes a rustle in the vegetation that you can't explain."
+    },
+    {
+      "start": 20.54,
+      "end": 24.42,
+      "text": "You keep moving, but eventually you realize something uncomfortable."
+    },
+    {
+      "start": 25.22,
+      "end": 27.76,
+      "text": "You don't really know where you are anymore."
+    },
+    {
+      "start": 28.72,
+      "end": 34.72,
+      "text": "For centuries, outsiders entered this forest and tried to understand what they were looking at."
+    },
+    {
+      "start": 35.38,
+      "end": 41.1,
+      "text": "Some came searching for gold. Others came looking for rivers, cities, or a way through."
+    },
+    {
+      "start": 41.92,
+      "end": 45.32,
+      "text": "And most of them saw an enormous wall of green."
+    },
+    {
+      "start": 46.16,
+      "end": 48.26,
+      "text": "But there was something they couldn't see."
+    },
+    {
+      "start": 49.28,
+      "end": 55.42,
+      "text": "Beneath that canopy were traces of roads, settlements, canals, and monumental structures"
+    },
+    {
+      "start": 55.42,
+      "end": 58.5,
+      "text": "built by people who lived here centuries ago."
+    },
+    {
+      "start": 59.58,
+      "end": 63.08,
+      "text": "The strange thing is that the forest didn't make those things disappear."
+    },
+    {
+      "start": 63.66,
+      "end": 65.26,
+      "text": "It simply covered them."
+    },
+    {
+      "start": 66.12,
+      "end": 72.74,
+      "text": "And once scientists found a way to look beneath the trees, the Amazon started telling a very different story."
+    },
+    {
+      "start": 73.86,
+      "end": 77.0,
+      "text": "One of the technologies that changed that was LIDAR."
+    },
+    {
+      "start": 77.72,
+      "end": 82.98,
+      "text": "Instead of relying on ordinary photographs, LIDAR sends laser pulses toward the ground"
+    },
+    {
+      "start": 82.98,
+      "end": 86.12,
+      "text": "and uses the returning signals to map the landscape."
+    },
+    {
+      "start": 86.68,
+      "end": 92.96,
+      "text": "Even when thick vegetation blocks the view from above, some of those laser pulses can reach the ground."
+    },
+    {
+      "start": 93.88,
+      "end": 99.72,
+      "text": "Researchers can then create a digital model of the terrain and strip away much of the vegetation."
+    },
+    {
+      "start": 100.58,
+      "end": 102.64,
+      "text": "And that's when things get interesting."
+    },
+    {
+      "start": 103.88,
+      "end": 111.1,
+      "text": "In the Bolivian Amazon, LIDAR revealed an extensive network of settlements associated with the Kassarabe culture,"
+    },
+    {
+      "start": 111.1,
+      "end": 115.2,
+      "text": "which flourished roughly between AD 500 and 1400."
+    },
+    {
+      "start": 116.38,
+      "end": 124.2,
+      "text": "Researchers found large settlements, monumental earthen structures, raised causeways, canals, and reservoirs."
+    },
+    {
+      "start": 124.84,
+      "end": 129.92,
+      "text": "Some of the monumental structures rise more than 20 meters above the surrounding landscape."
+    },
+    {
+      "start": 131.14,
+      "end": 134.78,
+      "text": "Look at the forest from the ground and you might see nothing unusual."
+    },
+    {
+      "start": 134.78,
+      "end": 140.48,
+      "text": "Look at the same place through the LIDAR data and the landscape suddenly makes sense."
+    },
+    {
+      "start": 141.26,
+      "end": 142.74,
+      "text": "Roads connect settlements."
+    },
+    {
+      "start": 143.36,
+      "end": 144.68,
+      "text": "Water was being managed."
+    },
+    {
+      "start": 145.18,
+      "end": 147.82,
+      "text": "Huge structures had been deliberately constructed."
+    },
+    {
+      "start": 148.66,
+      "end": 152.12,
+      "text": "This wasn't simply a few people passing through a forest."
+    },
+    {
+      "start": 152.68,
+      "end": 154.12,
+      "text": "It was a human landscape."
+    },
+    {
+      "start": 155.16,
+      "end": 161.54,
+      "text": "And that discovery matters because for a long time, the Amazon was described as if dense rainforest"
+    },
+    {
+      "start": 161.54,
+      "end": 165.68,
+      "text": "and large organized societies couldn't exist together."
+    },
+    {
+      "start": 166.84,
+      "end": 171.32,
+      "text": "The archaeological evidence tells us the situation was much more complicated."
+    },
+    {
+      "start": 172.36,
+      "end": 177.2,
+      "text": "There is even a historical clue that was recorded centuries before modern LIDAR."
+    },
+    {
+      "start": 178.02,
+      "end": 185.66,
+      "text": "In 1541 and 1542, the expedition led by Francisco de Oriana traveled down the Amazon"
+    },
+    {
+      "start": 185.66,
+      "end": 190.42,
+      "text": "and Friar Gaspard de Carvajal recorded what the expedition encountered."
+    },
+    {
+      "start": 190.94,
+      "end": 196.48,
+      "text": "His account described substantial settlements and populations along parts of the river."
+    },
+    {
+      "start": 197.62,
+      "end": 202.52,
+      "text": "For a long time, historians debated how much of those descriptions should be trusted."
+    },
+    {
+      "start": 203.28,
+      "end": 210.48,
+      "text": "Some of the expedition's claims were extraordinary and later Europeans encountered an Amazon that looked very different."
+    },
+    {
+      "start": 210.48,
+      "end": 217.74,
+      "text": "Disease, violence, and disruption had already transformed indigenous populations in many areas."
+    },
+    {
+      "start": 218.76,
+      "end": 228.86,
+      "text": "But archaeology is now providing independent evidence that parts of pre-Columbian Amazonia really did contain substantial settlements and engineered landscapes."
+    },
+    {
+      "start": 229.56,
+      "end": 233.74,
+      "text": "That doesn't mean every detail in Coutava Hall's account was correct."
+    },
+    {
+      "start": 233.74,
+      "end": 242.02,
+      "text": "It means the basic idea that large communities once existed along parts of the Amazon is no longer as difficult to accept."
+    },
+    {
+      "start": 242.94,
+      "end": 249.92,
+      "text": "And that brings us to one of the most famous legends ever attached to South America, El Dorado."
+    },
+    {
+      "start": 251.0,
+      "end": 261.06,
+      "text": "For centuries, European explorers searched for a place of unimaginable wealth, gold, precious objects, a powerful ruler,"
+    },
+    {
+      "start": 261.06,
+      "end": 267.46,
+      "text": "somewhere deep in the interior they believed an extraordinary kingdom might be waiting."
+    },
+    {
+      "start": 268.18,
+      "end": 269.7,
+      "text": "People died looking for it."
+    },
+    {
+      "start": 270.4,
+      "end": 272.18,
+      "text": "But the original story was different."
+    },
+    {
+      "start": 272.86,
+      "end": 275.9,
+      "text": "El Dorado wasn't originally the name of a golden city."
+    },
+    {
+      "start": 276.48,
+      "end": 284.52,
+      "text": "It referred to a gilded one associated with a Muisca ruler and a ceremony involving gold and lake Guatavita."
+    },
+    {
+      "start": 285.52,
+      "end": 290.04,
+      "text": "Somewhere along the way, a story about a person became a story about a kingdom."
+    },
+    {
+      "start": 290.56,
+      "end": 296.6,
+      "text": "Then the kingdom became a city, and the farther the story traveled, the bigger the legend became."
+    },
+    {
+      "start": 297.88,
+      "end": 301.7,
+      "text": "The golden city was never found, but there is an interesting twist."
+    },
+    {
+      "start": 302.54,
+      "end": 310.5,
+      "text": "The explorers were searching for treasure in a region that really did contain complex societies and landscapes they barely understood."
+    },
+    {
+      "start": 310.5,
+      "end": 315.48,
+      "text": "They were looking for gold while much of the actual history remained invisible."
+    },
+    {
+      "start": 316.28,
+      "end": 320.38,
+      "text": "And the Amazon is extremely good at making human traces disappear."
+    },
+    {
+      "start": 321.18,
+      "end": 326.2,
+      "text": "Give a road hundreds of years without maintenance and vegetation begins taking it back."
+    },
+    {
+      "start": 327.02,
+      "end": 328.52,
+      "text": "Roots break through the ground."
+    },
+    {
+      "start": 329.08,
+      "end": 330.26,
+      "text": "Soil accumulates."
+    },
+    {
+      "start": 331.02,
+      "end": 333.0,
+      "text": "Trees grow across the old path."
+    },
+    {
+      "start": 333.8,
+      "end": 338.8,
+      "text": "Eventually, something that was once carefully engineered can look completely natural."
+    },
+    {
+      "start": 339.8,
+      "end": 342.76,
+      "text": "Now, imagine that happening to an entire settlement."
+    },
+    {
+      "start": 343.32,
+      "end": 345.68,
+      "text": "That's why Lidar has been so important."
+    },
+    {
+      "start": 346.24,
+      "end": 348.38,
+      "text": "It isn't just revealing individual ruins."
+    },
+    {
+      "start": 348.88,
+      "end": 352.72,
+      "text": "In some places, it is revealing the shape of entire landscapes."
+    },
+    {
+      "start": 353.52,
+      "end": 358.2,
+      "text": "There is another part of the Amazon story that requires even more care."
+    },
+    {
+      "start": 358.86,
+      "end": 360.98,
+      "text": "The indigenous peoples who still live there."
+    },
+    {
+      "start": 361.84,
+      "end": 366.8,
+      "text": "Brazil's Funai recognizes confirmed groups living in voluntary isolation,"
+    },
+    {
+      "start": 366.8,
+      "end": 369.34,
+      "text": "along with other records under investigation."
+    },
+    {
+      "start": 370.02,
+      "end": 374.16,
+      "text": "These communities aren't simply mysterious groups waiting to be discovered."
+    },
+    {
+      "start": 374.84,
+      "end": 376.54,
+      "text": "Their isolation has a history."
+    },
+    {
+      "start": 377.18,
+      "end": 381.84,
+      "text": "Previous contact with outsiders has brought disease, violence, displacement,"
+    },
+    {
+      "start": 382.3,
+      "end": 385.74,
+      "text": "and devastating population loss to indigenous communities."
+    },
+    {
+      "start": 386.46,
+      "end": 390.74,
+      "text": "For people who have had little or no previous exposure to certain diseases,"
+    },
+    {
+      "start": 391.34,
+      "end": 394.86,
+      "text": "even an ordinary infection can become extremely dangerous."
+    },
+    {
+      "start": 395.86,
+      "end": 402.08,
+      "text": "That's why Brazilian authorities have policies designed to protect isolated peoples from forced contact."
+    },
+    {
+      "start": 402.6,
+      "end": 407.92,
+      "text": "Their presence is also a reminder that the Amazon isn't just a place with a hidden past."
+    },
+    {
+      "start": 408.62,
+      "end": 412.08,
+      "text": "It is a place where people live, have lived for generations,"
+    },
+    {
+      "start": 412.62,
+      "end": 416.98,
+      "text": "and continue to make their own choices about contact with the outside world."
+    },
+    {
+      "start": 417.66,
+      "end": 422.5,
+      "text": "And if you want to understand just how difficult the environment can be for an outsider,"
+    },
+    {
+      "start": 422.5,
+      "end": 424.54,
+      "text": "consider Ed Stafford."
+    },
+    {
+      "start": 424.84,
+      "end": 430.16,
+      "text": "In 2008, Stafford began an attempt to walk the length of the Amazon River."
+    },
+    {
+      "start": 430.6,
+      "end": 434.26,
+      "text": "He completed the journey after 860 days,"
+    },
+    {
+      "start": 434.76,
+      "end": 440.06,
+      "text": "becoming the first person recognized by Guinness World Records to walk the length of the river."
+    },
+    {
+      "start": 440.44,
+      "end": 446.58,
+      "text": "He had to deal with heat, rain, mud, insects, rivers, exhaustion,"
+    },
+    {
+      "start": 446.58,
+      "end": 452.78,
+      "text": "and the constant problem of simply moving forward through an enormous and difficult environment."
+    },
+    {
+      "start": 453.5,
+      "end": 457.22,
+      "text": "You don't need a mythical monster to make the Amazon dangerous."
+    },
+    {
+      "start": 458.0,
+      "end": 459.98,
+      "text": "The landscape itself is enough."
+    },
+    {
+      "start": 460.8,
+      "end": 467.02,
+      "text": "But the forest also contains natural phenomena that sound like legends until you examine them closely."
+    },
+    {
+      "start": 467.9,
+      "end": 474.74,
+      "text": "In Peru, there's a geothermal river known as Chennai-Tempishka, often called the Boiling River."
+    },
+    {
+      "start": 474.74,
+      "end": 479.46,
+      "text": "Its waters can become dangerously hot because of geothermal activity."
+    },
+    {
+      "start": 480.06,
+      "end": 487.12,
+      "text": "The surrounding rainforest looks ordinary, but the river itself can reach temperatures capable of causing severe burns."
+    },
+    {
+      "start": 487.98,
+      "end": 490.4,
+      "text": "And then there are the stories connected to the rivers."
+    },
+    {
+      "start": 491.24,
+      "end": 498.18,
+      "text": "Across Amazonian traditions, enormous serpents appear in stories associated with water and the natural world."
+    },
+    {
+      "start": 498.18,
+      "end": 504.58,
+      "text": "One well-known example is Yakumama, often translated as Mother of Water."
+    },
+    {
+      "start": 505.34,
+      "end": 509.46,
+      "text": "Yakumama belongs to mythology and tradition, not zoology,"
+    },
+    {
+      "start": 509.9,
+      "end": 516.56,
+      "text": "and there is no good scientific evidence for an enormous living serpent of the kind described in modern retellings."
+    },
+    {
+      "start": 516.74,
+      "end": 521.2,
+      "text": "But there really was a giant snake in prehistoric South America."
+    },
+    {
+      "start": 522.04,
+      "end": 526.78,
+      "text": "Its name was Tita no Boa, and this is where we need to be precise."
+    },
+    {
+      "start": 526.78,
+      "end": 530.68,
+      "text": "Tita no Boa did not live in the modern Amazon basin."
+    },
+    {
+      "start": 531.26,
+      "end": 536.06,
+      "text": "Its fossils were discovered in the Sedehone formation in what is now northern Colombia."
+    },
+    {
+      "start": 536.82,
+      "end": 543.14,
+      "text": "Around 58 to 60 million years ago, that region was a hot tropical rainforest environment."
+    },
+    {
+      "start": 543.74,
+      "end": 551.68,
+      "text": "Tita no Boa may have reached roughly 42 to 49 feet in length, making it one of the largest snakes known to science."
+    },
+    {
+      "start": 552.16,
+      "end": 555.62,
+      "text": "It wasn't a monster hiding in an Amazon river today."
+    },
+    {
+      "start": 555.62,
+      "end": 560.08,
+      "text": "It was a prehistoric animal from a completely different world."
+    },
+    {
+      "start": 560.52,
+      "end": 565.56,
+      "text": "But its existence tells us something fascinating about ancient tropical South America."
+    },
+    {
+      "start": 566.4,
+      "end": 574.04,
+      "text": "The ecosystems of the distant past could support animals on a scale that seems almost impossible when compared with the world we know today."
+    },
+    {
+      "start": 574.68,
+      "end": 581.98,
+      "text": "And the same problem of separating popular stories from scientific reality appears again when we talk about the Amazon itself."
+    },
+    {
+      "start": 582.98,
+      "end": 586.0,
+      "text": "You've probably heard it called the lungs of the earth."
+    },
+    {
+      "start": 586.5,
+      "end": 591.34,
+      "text": "You've probably also heard that the Amazon produces 20% of the world's oxygen."
+    },
+    {
+      "start": 592.0,
+      "end": 597.5,
+      "text": "The phrase is memorable. The number is repeated everywhere. But the science is more complicated."
+    },
+    {
+      "start": 598.46,
+      "end": 601.3,
+      "text": "The Amazon produces oxygen through photosynthesis."
+    },
+    {
+      "start": 601.86,
+      "end": 608.54,
+      "text": "But plants, animals, fungi, and microorganisms also consume oxygen and break down organic matter."
+    },
+    {
+      "start": 608.54,
+      "end": 615.66,
+      "text": "Over long periods, much of the oxygen produced within the forest is balanced by respiration and decomposition."
+    },
+    {
+      "start": 616.54,
+      "end": 627.14,
+      "text": "Meanwhile, NOAA estimates that roughly half of Earth's oxygen production comes from the ocean, with microscopic photosynthetic organisms such as phytoplankton playing a major role."
+    },
+    {
+      "start": 627.66,
+      "end": 633.7,
+      "text": "So the Amazon isn't a giant oxygen machine producing one-fifth of the air humanity breathes."
+    },
+    {
+      "start": 634.48,
+      "end": 641.82,
+      "text": "And correcting that myth doesn't make the forest less important. It points us toward what actually makes it important."
+    },
+    {
+      "start": 642.58,
+      "end": 652.02,
+      "text": "The Amazon is a huge part of the global carbon cycle. Its vegetation stores carbon and moves enormous amounts of water between the ground and atmosphere."
+    },
+    {
+      "start": 652.02,
+      "end": 664.04,
+      "text": "That water cycle influences rainfall, while the forest supports extraordinary biodiversity and millions of people with deep cultural and historical relationships to these landscapes."
+    },
+    {
+      "start": 664.78,
+      "end": 677.04,
+      "text": "So the real story isn't that the Amazon is keeping the planet alive by manufacturing oxygen. It's that the forest is part of a much larger system involving carbon, water, climate, and life."
+    },
+    {
+      "start": 677.04,
+      "end": 686.06,
+      "text": "And that system is changing. When forests are cleared or burned, carbon stored in vegetation and soils can enter the atmosphere."
+    },
+    {
+      "start": 686.78,
+      "end": 698.18,
+      "text": "Water cycles can be disrupted, habitats disappear, and once an ecosystem has been heavily altered, simply planting trees doesn't instantly recreate everything that existed before."
+    },
+    {
+      "start": 699.5,
+      "end": 702.74,
+      "text": "And now you can see the pattern running through all of these stories."
+    },
+    {
+      "start": 702.74,
+      "end": 708.54,
+      "text": "We look at the Amazon and think we understand what we're seeing. Then we look again."
+    },
+    {
+      "start": 709.34,
+      "end": 713.34,
+      "text": "The apparently empty forest contains ancient roads and settlements."
+    },
+    {
+      "start": 714.06,
+      "end": 719.0,
+      "text": "The golden city of El Dorado turns out to have grown from a much smaller story."
+    },
+    {
+      "start": 719.68,
+      "end": 728.28,
+      "text": "The legendary giant snake belongs to mythology, while a real prehistoric giant snake lived millions of years ago in what is now Columbia."
+    },
+    {
+      "start": 728.28,
+      "end": 740.34,
+      "text": "The famous oxygen claim turns out to be far more complicated than the slogan. Even the people living in the forest have histories and perspectives that outsiders have repeatedly misunderstood."
+    },
+    {
+      "start": 741.44,
+      "end": 753.12,
+      "text": "That's what makes the Amazon so fascinating. Not every legend is true, not every monster exists, but the truth underneath some of these stories can still be extraordinary."
+    },
+    {
+      "start": 753.12,
+      "end": 769.74,
+      "text": "A road hidden beneath vegetation, a monumental structure rising out of the forest floor, a settlement that outsiders never knew was there, evidence of people who engineered landscapes that later generations mistook for untouched nature."
+    },
+    {
+      "start": 770.32,
+      "end": 777.46,
+      "text": "So the next time you see an image of the Amazon, don't just look at the wall of green. Think about what you can't see."
+    },
+    {
+      "start": 778.18,
+      "end": 787.2,
+      "text": "Somewhere beneath that canopy could be an ancient road, a buried settlement, a landscape waiting for technology to reveal its shape."
+    },
+    {
+      "start": 788.32,
+      "end": 792.06,
+      "text": "The forest didn't destroy that history. It covered it."
+    }
+  ]
+}
