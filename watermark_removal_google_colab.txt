@@ -1,0 +1,1196 @@
+# ============================================================
+# GOOGLE COLAB VERSION
+# Conversion of:
+# remove_gemini_watermark.py
+#
+# Uses the ORIGINAL GeminiWatermarkTool Windows engine
+# through Wine inside Google Colab.
+#
+# Project:
+# /content/Shorts_Merge
+#
+# Input:
+# /content/Shorts_Merge/videos
+#
+# Output:
+# /content/Shorts_Merge/output
+# ============================================================
+
+import os
+import sys
+import re
+import time
+import shutil
+import subprocess
+import urllib.request
+import zipfile
+from pathlib import Path
+
+
+# ============================================================
+# CONFIGURATION
+# ============================================================
+
+BASE_DIR = Path("/content/Shorts_Merge")
+
+INPUT_DIR = BASE_DIR / "videos"
+OUTPUT_DIR = BASE_DIR / "output"
+TOOLS_DIR = BASE_DIR / "tools"
+
+TOOLS_DIR.mkdir(
+    parents=True,
+    exist_ok=True
+)
+
+OUTPUT_DIR.mkdir(
+    parents=True,
+    exist_ok=True
+)
+
+# ------------------------------------------------------------
+# PROCESS RANGE
+#
+# None = all videos
+#
+# Example:
+# START = 1
+# END   = 10
+# ------------------------------------------------------------
+
+START = None
+END = None
+
+# ------------------------------------------------------------
+# False = skip existing output files
+# True  = process again
+# ------------------------------------------------------------
+
+OVERWRITE = False
+
+# ------------------------------------------------------------
+# Original engine supports --cpu.
+#
+# False = normal engine mode
+# True  = CPU
+# ------------------------------------------------------------
+
+USE_CPU = False
+
+
+# ============================================================
+# ORIGINAL DOWNLOAD URL FROM YOUR SCRIPT
+# ============================================================
+
+TOOL_DOWNLOAD_URL = (
+    "https://github.com/allenk/VeoWatermarkRemover/releases/download/"
+    "v0.6.5-demo/GeminiWatermarkTool-Windows-x64-Video.zip"
+)
+
+
+# ============================================================
+# INSTALL COLAB DEPENDENCIES
+# ============================================================
+
+print("=" * 72)
+print("Installing Colab dependencies...")
+print("=" * 72)
+
+subprocess.run(
+    "apt-get update -qq",
+    shell=True,
+    check=True
+)
+
+subprocess.run(
+    "apt-get install -y -qq "
+    "ffmpeg "
+    "wine64 "
+    "unzip",
+    shell=True,
+    check=True
+)
+
+subprocess.run(
+    [
+        sys.executable,
+        "-m",
+        "pip",
+        "install",
+        "-q",
+        "opencv-python-headless",
+        "numpy"
+    ],
+    check=True
+)
+
+print("Dependencies installed.")
+
+
+# ============================================================
+# IMPORTS
+# ============================================================
+
+import cv2
+import numpy as np
+
+
+# ============================================================
+# CHECK INPUT DIRECTORY
+# ============================================================
+
+if not INPUT_DIR.is_dir():
+
+    raise FileNotFoundError(
+        f"\nVideos folder not found:\n{INPUT_DIR}"
+    )
+
+
+# ============================================================
+# NATURAL SORT
+# ============================================================
+
+def natural_sort_key(filename):
+
+    parts = re.split(
+        r'(\d+)',
+        filename
+    )
+
+    return [
+        int(p)
+        if p.isdigit()
+        else p.lower()
+        for p in parts
+    ]
+
+
+def get_video_number(filename):
+
+    match = re.search(
+        r'\d+',
+        Path(filename).stem
+    )
+
+    return (
+        int(match.group())
+        if match
+        else None
+    )
+
+
+# ============================================================
+# DOWNLOAD ORIGINAL WINDOWS ENGINE
+# ============================================================
+
+ENGINE_EXE = (
+    TOOLS_DIR /
+    "GeminiWatermarkTool-Video.exe"
+)
+
+ZIP_FILE = (
+    TOOLS_DIR /
+    "gwt_video.zip"
+)
+
+
+def ensure_engine():
+
+    if ENGINE_EXE.exists():
+
+        print(
+            f"[Engine] Existing engine found:\n"
+            f"{ENGINE_EXE}"
+        )
+
+        return ENGINE_EXE
+
+
+    print()
+    print("=" * 72)
+    print("Downloading ORIGINAL Gemini/Veo engine...")
+    print("=" * 72)
+
+    print(
+        TOOL_DOWNLOAD_URL
+    )
+
+    try:
+
+        urllib.request.urlretrieve(
+            TOOL_DOWNLOAD_URL,
+            ZIP_FILE
+        )
+
+    except Exception as e:
+
+        raise RuntimeError(
+            "Could not download the original "
+            "GeminiWatermarkTool package.\n\n"
+            f"Error: {e}"
+        )
+
+
+    print(
+        f"Downloaded: "
+        f"{ZIP_FILE.stat().st_size / 1024 / 1024:.2f} MB"
+    )
+
+
+    print("Extracting engine...")
+
+
+    with zipfile.ZipFile(
+        ZIP_FILE,
+        "r"
+    ) as zf:
+
+        zf.extractall(
+            TOOLS_DIR
+        )
+
+
+    if ZIP_FILE.exists():
+        ZIP_FILE.unlink()
+
+
+    # --------------------------------------------------------
+    # Search recursively because the ZIP may contain
+    # a subdirectory.
+    # --------------------------------------------------------
+
+    if not ENGINE_EXE.exists():
+
+        candidates = list(
+            TOOLS_DIR.rglob(
+                "GeminiWatermarkTool-Video.exe"
+            )
+        )
+
+
+        if candidates:
+
+            source = candidates[0]
+
+            if source != ENGINE_EXE:
+
+                shutil.copy2(
+                    source,
+                    ENGINE_EXE
+                )
+
+
+    if not ENGINE_EXE.exists():
+
+        print()
+        print(
+            "Files extracted from package:"
+        )
+
+        for p in TOOLS_DIR.rglob("*"):
+
+            if p.is_file():
+
+                print(
+                    " ",
+                    p
+                )
+
+
+        raise FileNotFoundError(
+            "\nGeminiWatermarkTool-Video.exe "
+            "was not found after extraction."
+        )
+
+
+    print(
+        f"[Engine] Ready:\n{ENGINE_EXE}"
+    )
+
+    return ENGINE_EXE
+
+
+ENGINE = ensure_engine()
+
+
+# ============================================================
+# WINE COMMAND
+# ============================================================
+
+def wine_command(*args):
+
+    return [
+        "wine",
+        str(ENGINE),
+        *[
+            str(x)
+            for x in args
+        ]
+    ]
+
+
+# ============================================================
+# TEST ENGINE
+# ============================================================
+
+print()
+print("=" * 72)
+print("Testing watermark engine...")
+print("=" * 72)
+
+test_result = subprocess.run(
+    wine_command("--help"),
+    stdout=subprocess.PIPE,
+    stderr=subprocess.STDOUT,
+    text=True,
+    check=False
+)
+
+print(
+    test_result.stdout[-3000:]
+)
+
+if test_result.returncode not in (0, 1):
+
+    print(
+        "\nWARNING: Engine returned "
+        f"code {test_result.returncode}."
+    )
+
+print(
+    "Engine test completed."
+)
+
+
+# ============================================================
+# PATCH SKIPPED FRAMES
+# ============================================================
+
+def check_and_patch_skipped_frames(
+    input_video,
+    output_video
+):
+
+    """
+    Same skipped-frame repair logic from the
+    original uploaded script, converted to
+    Wine/Colab execution.
+    """
+
+    cap_in = cv2.VideoCapture(
+        str(input_video)
+    )
+
+    cap_out = cv2.VideoCapture(
+        str(output_video)
+    )
+
+
+    w = int(
+        cap_in.get(
+            cv2.CAP_PROP_FRAME_WIDTH
+        )
+    )
+
+    h = int(
+        cap_in.get(
+            cv2.CAP_PROP_FRAME_HEIGHT
+        )
+    )
+
+    fps = (
+        cap_in.get(
+            cv2.CAP_PROP_FPS
+        )
+        or 24.0
+    )
+
+
+    # --------------------------------------------------------
+    # SAME REGIONS AS ORIGINAL SCRIPT
+    # --------------------------------------------------------
+
+    if (w, h) == (1280, 720):
+
+        rx = 1136
+        ry = 576
+        rw = 48
+        rh = 48
+
+        alpha_val = 0.60
+
+
+    elif (w, h) == (1920, 1080):
+
+        rx = 1716
+        ry = 884
+        rw = 60
+        rh = 60
+
+        alpha_val = 0.95
+
+
+    else:
+
+        rx = int(
+            w * 0.89
+        )
+
+        ry = int(
+            h * 0.80
+        )
+
+        rw = int(
+            w * 0.04
+        )
+
+        rh = int(
+            h * 0.06
+        )
+
+        alpha_val = 0.60
+
+
+    # --------------------------------------------------------
+    # COMPARE ORIGINAL AND PROCESSED OUTPUT
+    # --------------------------------------------------------
+
+    diffs = []
+
+    while True:
+
+        ri, fi = cap_in.read()
+
+        ro, fo = cap_out.read()
+
+
+        if not ri or not ro:
+            break
+
+
+        region_in = fi[
+            ry:ry + rh,
+            rx:rx + rw
+        ].astype(float)
+
+
+        region_out = fo[
+            ry:ry + rh,
+            rx:rx + rw
+        ].astype(float)
+
+
+        diff = float(
+            np.mean(
+                np.abs(
+                    region_in -
+                    region_out
+                )
+            )
+        )
+
+
+        diffs.append(
+            diff
+        )
+
+
+    cap_in.release()
+    cap_out.release()
+
+
+    if not diffs:
+
+        return True
+
+
+    # --------------------------------------------------------
+    # SAME DYNAMIC THRESHOLD AS UPLOADED SCRIPT
+    # --------------------------------------------------------
+
+    median_d = float(
+        np.median(diffs)
+    )
+
+    threshold = max(
+        7.0,
+        median_d * 0.4
+    )
+
+
+    skipped_indices = [
+
+        i
+
+        for i, d in enumerate(diffs)
+
+        if d < threshold
+    ]
+
+
+    if not skipped_indices:
+
+        return True
+
+
+    print(
+        f"\n"
+        f" [Auto-fixing "
+        f"{len(skipped_indices)} "
+        f"skipped frame(s)]...",
+        end="",
+        flush=True
+    )
+
+
+    # --------------------------------------------------------
+    # TEMP DIRECTORY
+    # --------------------------------------------------------
+
+    temp_dir = (
+        output_video.parent /
+        ".temp_patch"
+    )
+
+
+    temp_dir.mkdir(
+        exist_ok=True
+    )
+
+
+    clean_frames = {}
+
+
+    # --------------------------------------------------------
+    # EXTRACT SKIPPED FRAMES
+    # --------------------------------------------------------
+
+    cap_in = cv2.VideoCapture(
+        str(input_video)
+    )
+
+
+    for f_idx in skipped_indices:
+
+        cap_in.set(
+            cv2.CAP_PROP_POS_FRAMES,
+            f_idx
+        )
+
+
+        ret, frame = cap_in.read()
+
+
+        if not ret:
+            continue
+
+
+        raw_path = (
+            temp_dir /
+            f"frame_{f_idx}_raw.png"
+        )
+
+
+        clean_path = (
+            temp_dir /
+            f"frame_{f_idx}_clean.png"
+        )
+
+
+        cv2.imwrite(
+            str(raw_path),
+            frame
+        )
+
+
+        # ----------------------------------------------------
+        # SAME ENGINE ARGUMENTS AS ORIGINAL
+        # ----------------------------------------------------
+
+        cmd = wine_command(
+
+            "-i",
+            raw_path,
+
+            "-o",
+            clean_path,
+
+            "--region",
+            f"{rx},{ry},{rw},{rh}",
+
+            "--veo-alpha",
+            str(alpha_val),
+
+            "--denoise",
+            "ai",
+
+            "-f"
+        )
+
+
+        if USE_CPU:
+            cmd.append("--cpu")
+
+
+        subprocess.run(
+            cmd,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            check=False
+        )
+
+
+        if clean_path.exists():
+
+            clean_frame = cv2.imread(
+                str(clean_path)
+            )
+
+
+            if clean_frame is not None:
+
+                clean_frames[
+                    f_idx
+                ] = clean_frame
+
+
+            clean_path.unlink()
+
+
+        if raw_path.exists():
+            raw_path.unlink()
+
+
+    cap_in.release()
+
+
+    if not clean_frames:
+
+        shutil.rmtree(
+            temp_dir,
+            ignore_errors=True
+        )
+
+        return True
+
+
+    # --------------------------------------------------------
+    # REBUILD VIDEO
+    # --------------------------------------------------------
+
+    temp_out = (
+        output_video.parent /
+        f".temp_{output_video.name}"
+    )
+
+
+    ffmpeg_cmd = [
+
+        "ffmpeg",
+
+        "-y",
+
+        "-hide_banner",
+
+        "-loglevel",
+        "error",
+
+        "-f",
+        "rawvideo",
+
+        "-pix_fmt",
+        "bgr24",
+
+        "-s",
+        f"{w}x{h}",
+
+        "-r",
+        str(fps),
+
+        "-i",
+        "-",
+
+        "-i",
+        str(input_video),
+
+        "-map",
+        "0:v:0",
+
+        "-map",
+        "1:a?",
+
+        "-c:v",
+        "libx264",
+
+        "-preset",
+        "fast",
+
+        "-crf",
+        "18",
+
+        "-pix_fmt",
+        "yuv420p",
+
+        "-c:a",
+        "copy",
+
+        str(temp_out)
+    ]
+
+
+    p = subprocess.Popen(
+        ffmpeg_cmd,
+        stdin=subprocess.PIPE
+    )
+
+
+    cap_out = cv2.VideoCapture(
+        str(output_video)
+    )
+
+
+    f_idx = 0
+
+
+    while True:
+
+        ret, frame = cap_out.read()
+
+
+        if not ret:
+            break
+
+
+        if f_idx in clean_frames:
+
+            frame = clean_frames[
+                f_idx
+            ]
+
+
+        p.stdin.write(
+            frame.tobytes()
+        )
+
+
+        f_idx += 1
+
+
+    cap_out.release()
+
+    p.stdin.close()
+
+    p.wait()
+
+
+    shutil.rmtree(
+        temp_dir,
+        ignore_errors=True
+    )
+
+
+    if (
+        temp_out.exists()
+        and temp_out.stat().st_size > 1000
+    ):
+
+        temp_out.replace(
+            output_video
+        )
+
+        return True
+
+
+    return False
+
+
+# ============================================================
+# PROCESS ONE VIDEO
+# ============================================================
+
+def process_video(
+    input_video,
+    output_video
+):
+
+    """
+    Same main engine processing as the
+    original script.
+
+    Original:
+        engine -i input -o output --veo -v
+
+    Colab:
+        wine engine.exe -i input -o output --veo -v
+    """
+
+
+    cmd = wine_command(
+
+        "-i",
+        input_video,
+
+        "-o",
+        output_video,
+
+        "--veo",
+
+        "-v"
+    )
+
+
+    if USE_CPU:
+
+        cmd.append(
+            "--cpu"
+        )
+
+
+    try:
+
+        proc = subprocess.run(
+
+            cmd,
+
+            stdout=subprocess.PIPE,
+
+            stderr=subprocess.STDOUT,
+
+            text=True,
+
+            check=False
+        )
+
+
+        # ----------------------------------------------------
+        # VERIFY OUTPUT
+        # ----------------------------------------------------
+
+        if (
+
+            proc.returncode == 0
+
+            and output_video.exists()
+
+            and output_video.stat().st_size > 1000
+
+        ):
+
+
+            # ------------------------------------------------
+            # ALWAYS RUN SKIPPED FRAME CHECK
+            # Same behavior as uploaded script
+            # ------------------------------------------------
+
+            check_and_patch_skipped_frames(
+
+                input_video,
+
+                output_video
+            )
+
+
+            return True
+
+
+        # ----------------------------------------------------
+        # ERROR OUTPUT
+        # ----------------------------------------------------
+
+        print()
+
+        print(
+            f"[Warning] Process returned "
+            f"code {proc.returncode} "
+            f"for {input_video.name}"
+        )
+
+
+        lines = (
+            proc.stdout
+            .strip()
+            .splitlines()
+        )
+
+
+        for line in lines[-15:]:
+
+            print(
+                " ",
+                line
+            )
+
+
+        return False
+
+
+    except Exception as exc:
+
+        print(
+            f"\n[Error] Exception during "
+            f"processing "
+            f"{input_video.name}: "
+            f"{exc}"
+        )
+
+        return False
+
+
+# ============================================================
+# FIND VIDEOS
+# ============================================================
+
+all_files = [
+
+    f
+
+    for f in os.listdir(
+        INPUT_DIR
+    )
+
+    if f.lower().endswith(".mp4")
+]
+
+
+all_files.sort(
+    key=natural_sort_key
+)
+
+
+if not all_files:
+
+    print(
+        f"No .mp4 files found in:\n"
+        f"{INPUT_DIR}"
+    )
+
+    raise SystemExit
+
+
+# ============================================================
+# FILTER RANGE
+# ============================================================
+
+filtered_files = []
+
+
+for f in all_files:
+
+    number = get_video_number(
+        f
+    )
+
+
+    if number is not None:
+
+        if (
+            START is not None
+            and number < START
+        ):
+
+            continue
+
+
+        if (
+            END is not None
+            and number > END
+        ):
+
+            continue
+
+
+    filtered_files.append(
+        f
+    )
+
+
+# ============================================================
+# DISPLAY CONFIG
+# ============================================================
+
+print()
+print("=" * 72)
+print("   GOOGLE COLAB GEMINI / VEO WATERMARK REMOVAL")
+print("=" * 72)
+
+print(
+    "Engine      : "
+    "GeminiWatermarkTool-Video.exe"
+    " via Wine"
+)
+
+print(
+    f"Videos Path : {INPUT_DIR}"
+)
+
+print(
+    f"Output Path : {OUTPUT_DIR}"
+)
+
+print(
+    f"Videos      : {len(filtered_files)}"
+)
+
+print(
+    "Processing   : Reverse Alpha / AI Denoise"
+)
+
+print(
+    f"Mode        : "
+    f"{'CPU' if USE_CPU else 'Normal Engine Mode'}"
+)
+
+print("=" * 72)
+
+
+# ============================================================
+# BATCH PROCESS
+# ============================================================
+
+success_count = 0
+skipped_count = 0
+failed_count = 0
+
+start_time = time.time()
+
+
+for idx, fname in enumerate(
+    filtered_files,
+    1
+):
+
+    in_path = (
+        INPUT_DIR /
+        fname
+    )
+
+
+    out_path = (
+        OUTPUT_DIR /
+        fname
+    )
+
+
+    # --------------------------------------------------------
+    # SKIP EXISTING
+    # --------------------------------------------------------
+
+    if (
+
+        not OVERWRITE
+
+        and out_path.is_file()
+
+        and out_path.stat().st_size > 1000
+
+    ):
+
+        print(
+            f"[{idx}/{len(filtered_files)}] "
+            f"{fname} -> "
+            f"ALREADY PROCESSED "
+            f"(Skipping)"
+        )
+
+        skipped_count += 1
+
+        continue
+
+
+    file_size_mb = (
+        in_path.stat().st_size
+        /
+        (1024 * 1024)
+    )
+
+
+    print(
+        f"[{idx}/{len(filtered_files)}] "
+        f"Processing {fname} "
+        f"({file_size_mb:.1f} MB)...",
+        end="",
+        flush=True
+    )
+
+
+    file_start = time.time()
+
+
+    ok = process_video(
+
+        in_path,
+
+        out_path
+    )
+
+
+    file_elapsed = (
+        time.time()
+        -
+        file_start
+    )
+
+
+    if ok:
+
+        print(
+            f" SUCCESS "
+            f"in {file_elapsed:.1f}s "
+            f"-> saved to "
+            f"output/{out_path.name}"
+        )
+
+        success_count += 1
+
+
+    else:
+
+        print(
+            " FAILED!"
+        )
+
+        failed_count += 1
+
+
+# ============================================================
+# FINAL SUMMARY
+# ============================================================
+
+total_elapsed = (
+    time.time()
+    -
+    start_time
+)
+
+
+print()
+print("=" * 72)
+print("   Batch Processing Complete (1 to n)")
+print("=" * 72)
+
+print(
+    f"Total videos completed : "
+    f"{success_count}"
+)
+
+print(
+    f"Already completed      : "
+    f"{skipped_count}"
+)
+
+print(
+    f"Failed                 : "
+    f"{failed_count}"
+)
+
+print(
+    f"Total time elapsed     : "
+    f"{total_elapsed:.1f}s "
+    f"({total_elapsed / 60:.1f} minutes)"
+)
+
+print(
+    f"Output folder          : "
+    f"{OUTPUT_DIR}"
+)
+
+print("=" * 72)
